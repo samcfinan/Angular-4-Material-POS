@@ -1,0 +1,17 @@
+@import '../app.component.scss';
+
+.navbar {
+  height: 3rem;
+  background-color: darkblue;
+}
+
+.title {
+  color: white;
+  font-family: $main-font;
+  font-size: 1.25rem;
+}
+
+.subtitle {
+  color: white;
+  font-family: $secondary-font;
+}

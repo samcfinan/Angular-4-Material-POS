@@ -1,0 +1,62 @@
+// Font settigns
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:300|Lora:400i|Montserrat:700');
+$main-font: 'Montserrat';
+$secondary-font: 'Lora';
+$body-font: 'Hind Madurai';
+
+.text-align-center {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Flex settings
+
+.flex {
+  display: flex;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+// Margin & Padding settings
+
+.add-margin {
+  margin: 1rem;
+}
+
+.add-padding {
+  padding: 1rem;
+}
+
+.padding-horizontal {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

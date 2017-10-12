@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
@@ -18,7 +21,8 @@ import { TicketComponent } from './ticket/ticket.component';
     TicketComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
