@@ -37,7 +37,7 @@
 
 .summary {
   background-color: $main-color;
-  height: 2.5rem;
+  height: 3rem;
   margin-top: auto;
 }
 
@@ -49,8 +49,18 @@
 
 td, th {
   padding: 0.5rem;
+  vertical-align: middle;
 }
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+button {
+  margin-right: 1rem;
+}
+
+.checkout {
+  margin-right: 0.5rem;
+  background-color: rgb(214, 102, 102);
 }

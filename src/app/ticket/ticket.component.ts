@@ -56,6 +56,11 @@ export class TicketComponent implements OnInit {
     this.cartTotal = total;
   }
 
+  clearCart() {
+    this.items = [];
+    this.calculateTotal();
+  }
+
 }
 
 

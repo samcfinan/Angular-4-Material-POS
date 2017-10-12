@@ -5,17 +5,20 @@
       <th>Qty</th>
       <th>Item</th>
       <th>Price</th>
-      <th>Delete?</th>
+      <th>Modify</th>
     </tr>
     <tr *ngFor="let item of items" class="item">
       <td>{{item.quantity}}</td>
       <td>{{item.name}}</td>
       <td>${{item.price}}</td>
-      <td><mat-icon (click)="removeItem(item)" class="del">clear</mat-icon></td>
+      <td><mat-icon (click)="addItem(item)" class="del">control_point</mat-icon><mat-icon (click)="removeItem(item)" class="del">cancel</mat-icon></td>
     </tr>
   </table>
-  <div class="summary flex flex-direction-row align-items-center">
-    <h3 class="total">Total:</h3>
-    <p class="total">${{cartTotal}}</p>
+  <div class="summary flex flex-direction-row align-items-center justify-between">
+    <h3 class="total">Total: ${{cartTotal}}</h3>
+    <div class="flex flex-direction-row buttons">
+      <button class="" mat-raised-button (click)="clearCart()">Clear</button>
+      <button class="checkout" mat-raised-button>Checkout</button>      
+    </div>
   </div>
 </div>
