@@ -1,0 +1,14 @@
+@import '../app.component.scss';
+
+.pos-section {
+  min-height: 350px;
+  border: 1px solid $main-color;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+
+.heading {
+  background-color: $main-color;
+  color:white;
+  font-family: $main-font;
+  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}

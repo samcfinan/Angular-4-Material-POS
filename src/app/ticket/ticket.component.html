@@ -1,3 +1,11 @@
-<p>
-  ticket works!
-</p>
+<div class="ticket-section flex flex-direction-column justify-between">
+  <h1 class="add-padding heading">Order Summary</h1>
+  <div class="add-margin flex flex-direction-column items">
+    <li *ngFor="let item of items" class="item">
+      {{item.name}}
+    </li>
+  </div>
+  <div class="summary flex flex-direction-column justify-center">
+    <h3 class="add-margin total">Total:</h3>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+@import '../app.component.scss';
+
+.ticket-section {
+  min-height: 350px;
+  border: 1px solid $main-color;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+
+.heading {
+  background-color: $main-color;
+  color:white;
+  font-family: $main-font;
+}
+
+.items {
+  min-height: 300px;
+  height: 100%;
+}
+
+.item {
+  font-family: $body-font;
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+.summary {
+  background-color: $main-color;
+  height: 2rem;
+}
+
+.total {
+  color: white;
+  font-family: $body-font;
+}

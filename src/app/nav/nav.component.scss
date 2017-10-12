@@ -1,8 +1,8 @@
 @import '../app.component.scss';
 
 .navbar {
-  height: 3rem;
-  background-color: darkblue;
+  min-height: 3rem;
+  background-color: $main-color;
 }
 
 .title {
