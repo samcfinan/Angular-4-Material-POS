@@ -1,17 +1,19 @@
 <div class="ticket-section flex flex-direction-column justify-between">
   <h1 class="add-padding heading">Order Summary</h1>
-  <div class="flex flex-direction-column items">
-    <div class="table-header">
-      <h2>Qty</h2>
-      <h2>Item</h2>
-    </div>
-    <li *ngFor="let item of items">
-      <div class="item-row flex flex-direction-row">
-        <p class="item">{{item.quantity}} {{item.name}}</p>
-        <p class="price">${{item.price}}</p>
-      </div>
-    </li>
-  </div>
+  <table class="items">
+    <tr class="table-header">
+      <th>Qty</th>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Delete?</th>
+    </tr>
+    <tr *ngFor="let item of items" class="item">
+      <td>{{item.quantity}}</td>
+      <td>{{item.name}}</td>
+      <td>${{item.price}}</td>
+      <td><mat-icon (click)="removeItem(item)" class="del">clear</mat-icon></td>
+    </tr>
+  </table>
   <div class="summary flex flex-direction-row align-items-center">
     <h3 class="total">Total:</h3>
     <p class="total">${{cartTotal}}</p>

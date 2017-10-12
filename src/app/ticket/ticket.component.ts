@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 export class Item {
   id: number;
   name: string;
@@ -48,8 +49,9 @@ export class TicketComponent implements OnInit {
 
   calculateTotal() {
     let total = 0;
+    // Multiply item price by item quantity, add to total
     this.items.forEach(function(item: Item) {
-      total += item.price;
+      total += (item.price * item.quantity);
     });
     this.cartTotal = total;
   }
@@ -61,5 +63,7 @@ export class TicketComponent implements OnInit {
 const ITEMS = [
   {id: 1, name: 'Coffee', price: 2.00, quantity: 1},
   {id: 2, name: 'Americano', price: 3.00, quantity: 1},
-  {id: 3, name: 'Cappuccino', price: 3.25, quantity: 2}
+  {id: 3, name: 'Cappuccino', price: 3.5, quantity: 2},
+  {id: 4, name: 'Latte', price: 3.5, quantity: 1},
+  {id: 5, name: 'Cortado', price: 3.5, quantity: 2},
 ];

@@ -12,38 +12,45 @@
   font-family: $main-font;
 }
 
+.table-header {
+  text-align: left;
+  font-family: $body-font;
+  font-weight: 700;
+}
+
 .items {
-  min-height: 300px;
-  height: 100%;
-  display: table;
   width: 100%;
 }
 
-.table-header {
-  display: table-header-group;
-}
-
-.item-row {
-  padding: 0.5rem;
-  border-bottom: 1px grey solid;
-}
 
 .item {
   font-family: $body-font;
-  list-style: none;
 }
 
-.price {
-  align-self: baseline;
+.del {
+  color: grey;
 }
+.del:hover {
+  color: black;
+}
+
 
 .summary {
   background-color: $main-color;
-  height: 2rem;
+  height: 2.5rem;
+  margin-top: auto;
 }
 
 .total {
   color: white;
   font-family: $body-font;
+  padding: 0.75rem;
+}
+
+td, th {
   padding: 0.5rem;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
