@@ -1,11 +1,19 @@
 <div class="ticket-section flex flex-direction-column justify-between">
   <h1 class="add-padding heading">Order Summary</h1>
-  <div class="add-margin flex flex-direction-column items">
-    <li *ngFor="let item of items" class="item">
-      {{item.name}}
+  <div class="flex flex-direction-column items">
+    <div class="table-header">
+      <h2>Qty</h2>
+      <h2>Item</h2>
+    </div>
+    <li *ngFor="let item of items">
+      <div class="item-row flex flex-direction-row">
+        <p class="item">{{item.quantity}} {{item.name}}</p>
+        <p class="price">${{item.price}}</p>
+      </div>
     </li>
   </div>
-  <div class="summary flex flex-direction-column justify-center">
-    <h3 class="add-margin total">Total:</h3>
+  <div class="summary flex flex-direction-row align-items-center">
+    <h3 class="total">Total:</h3>
+    <p class="total">${{cartTotal}}</p>
   </div>
 </div>

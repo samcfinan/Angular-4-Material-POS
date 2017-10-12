@@ -15,12 +15,26 @@
 .items {
   min-height: 300px;
   height: 100%;
+  display: table;
+  width: 100%;
+}
+
+.table-header {
+  display: table-header-group;
+}
+
+.item-row {
+  padding: 0.5rem;
+  border-bottom: 1px grey solid;
 }
 
 .item {
   font-family: $body-font;
-  margin-bottom: 0.5rem;
   list-style: none;
+}
+
+.price {
+  align-self: baseline;
 }
 
 .summary {
@@ -31,4 +45,5 @@
 .total {
   color: white;
   font-family: $body-font;
+  padding: 0.5rem;
 }

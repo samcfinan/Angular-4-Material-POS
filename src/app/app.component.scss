@@ -4,12 +4,17 @@ $main-font: 'Montserrat';
 $secondary-font: 'Lora';
 $body-font: 'Hind Madurai';
 
+
 .text-align-center {
   text-align: center;
 }
 
 a {
   text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 
 // Colors

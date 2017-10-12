@@ -15,10 +15,12 @@ export class Item {
 export class TicketComponent implements OnInit {
 
   items = ITEMS;
+  cartTotal = 0;
 
   constructor() { }
 
   ngOnInit() {
+    this.calculateTotal();
   }
 
   // Add item to ticket.
@@ -29,6 +31,7 @@ export class TicketComponent implements OnInit {
     } else {
       this.items.push(item);
     }
+    this.calculateTotal();
   }
 
   removeItem(item: Item) {
@@ -40,12 +43,21 @@ export class TicketComponent implements OnInit {
         this.items.splice(index, 1);
       }
     }
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    let total = 0;
+    this.items.forEach(function(item: Item) {
+      total += item.price;
+    });
+    this.cartTotal = total;
   }
 
 }
 
 
-
+// Demo content
 const ITEMS = [
   {id: 1, name: 'Coffee', price: 2.00, quantity: 1},
   {id: 2, name: 'Americano', price: 3.00, quantity: 1},
