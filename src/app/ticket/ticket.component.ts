@@ -47,6 +47,16 @@ export class TicketComponent implements OnInit {
     this.calculateTotal();
   }
 
+  subtractOne(item: Item) {
+    // Check if last item, if so, use remove method
+    if (this.items[this.items.indexOf(item)].quantity === 1) {
+      this.removeItem(item);
+    } else {
+      this.items[this.items.indexOf(item)].quantity = this.items[this.items.indexOf(item)].quantity - 1;
+    }
+    this.calculateTotal();
+  }
+
   calculateTotal() {
     let total = 0;
     // Multiply item price by item quantity, add to total

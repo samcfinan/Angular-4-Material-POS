@@ -11,7 +11,10 @@
       <td>{{item.quantity}}</td>
       <td>{{item.name}}</td>
       <td>${{item.price}}</td>
-      <td><mat-icon (click)="addItem(item)" class="del">control_point</mat-icon><mat-icon (click)="removeItem(item)" class="del">cancel</mat-icon></td>
+      <td>
+        <mat-icon (click)="addItem(item)" class="del">control_point</mat-icon>
+        <mat-icon (click)="subtractOne(item)" class="del">indeterminate_check_box</mat-icon>
+        <mat-icon (click)="removeItem(item)" class="del">cancel</mat-icon></td>
     </tr>
   </table>
   <div class="summary flex flex-direction-row align-items-center justify-between">
