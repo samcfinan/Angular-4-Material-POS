@@ -47,6 +47,7 @@ export class TicketComponent implements OnInit {
     this.calculateTotal();
   }
 
+  // Reduce quantity by one
   subtractOne(item: Item) {
     // Check if last item, if so, use remove method
     if (this.items[this.items.indexOf(item)].quantity === 1) {
@@ -57,6 +58,7 @@ export class TicketComponent implements OnInit {
     this.calculateTotal();
   }
 
+  // Calculate cart total
   calculateTotal() {
     let total = 0;
     // Multiply item price by item quantity, add to total
@@ -66,6 +68,7 @@ export class TicketComponent implements OnInit {
     this.cartTotal = total;
   }
 
+  // Remove all items from cart
   clearCart() {
     this.items = [];
     this.calculateTotal();
