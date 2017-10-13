@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../item';
 
-
-export class Item {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
 
 @Component({
   selector: 'app-ticket',
@@ -72,6 +66,10 @@ export class TicketComponent implements OnInit {
   clearCart() {
     this.items = [];
     this.calculateTotal();
+  }
+
+  onItemSelect(item: Item) {
+    this.addItem(item);
   }
 
 }
