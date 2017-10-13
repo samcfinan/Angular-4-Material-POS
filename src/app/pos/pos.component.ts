@@ -9,16 +9,12 @@ import { Item } from '../item';
 export class PosComponent implements OnInit {
 
   menu = MENU;
-  @Output() onItemSelect = new EventEmitter<Item>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addToCheck(item: Item) {
-    this.onItemSelect.emit(item);
-  }
 
 }
 

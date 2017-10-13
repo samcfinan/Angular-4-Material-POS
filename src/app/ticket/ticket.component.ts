@@ -68,10 +68,6 @@ export class TicketComponent implements OnInit {
     this.calculateTotal();
   }
 
-  onItemSelect(item: Item) {
-    this.addItem(item);
-  }
-
 }
 
 
