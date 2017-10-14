@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item';
+import { PosService } from '../pos.service';
 
 
 @Component({
@@ -9,46 +10,52 @@ import { Item } from '../item';
 })
 export class TicketComponent implements OnInit {
 
+  ticket: Item[] = [];
+
   items = ITEMS;
   cartTotal = 0;
 
-  constructor() { }
+  constructor(private ticketSync: PosService) { }
 
   ngOnInit() {
+    this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
     this.calculateTotal();
   }
 
   // Add item to ticket.
   addItem(item: Item) {
     // If the item already exists, add 1 to quantity
-    if (this.items.includes(item)) {
-      this.items[this.items.indexOf(item)].quantity += 1;
+    if (this.ticket.includes(item)) {
+      this.ticket[this.ticket.indexOf(item)].quantity += 1;
     } else {
-      this.items.push(item);
+      this.ticket.push(item);
     }
+    this.syncTicket();
     this.calculateTotal();
   }
 
   removeItem(item: Item) {
     // Check if item is in array
-    if (this.items.includes(item)) {
+    if (this.ticket.includes(item)) {
       // Splice the element out of the array
-      const index = this.items.indexOf(item);
+      const index = this.ticket.indexOf(item);
       if (index > -1) {
-        this.items.splice(index, 1);
+        this.ticket.splice(index, 1);
       }
     }
+    this.syncTicket();
     this.calculateTotal();
   }
 
   // Reduce quantity by one
   subtractOne(item: Item) {
     // Check if last item, if so, use remove method
-    if (this.items[this.items.indexOf(item)].quantity === 1) {
+    if (this.ticket[this.ticket.indexOf(item)].quantity === 1) {
       this.removeItem(item);
     } else {
-      this.items[this.items.indexOf(item)].quantity = this.items[this.items.indexOf(item)].quantity - 1;
+      this.ticket[this.ticket.indexOf(item)].quantity = this.ticket[this.ticket.indexOf(item)].quantity - 1;
     }
+    this.syncTicket();
     this.calculateTotal();
   }
 
@@ -56,7 +63,7 @@ export class TicketComponent implements OnInit {
   calculateTotal() {
     let total = 0;
     // Multiply item price by item quantity, add to total
-    this.items.forEach(function(item: Item) {
+    this.ticket.forEach(function(item: Item) {
       total += (item.price * item.quantity);
     });
     this.cartTotal = total;
@@ -64,8 +71,13 @@ export class TicketComponent implements OnInit {
 
   // Remove all items from cart
   clearCart() {
-    this.items = [];
+    this.ticket = [];
+    this.syncTicket();
     this.calculateTotal();
+  }
+
+  syncTicket() {
+    this.ticketSync.changeTicket(this.ticket);
   }
 
 }

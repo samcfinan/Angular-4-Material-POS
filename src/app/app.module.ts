@@ -13,6 +13,8 @@ import { HistoryComponent } from './history/history.component';
 import { PosComponent } from './pos/pos.component';
 import { TicketComponent } from './ticket/ticket.component';
 
+import { PosService } from './pos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { TicketComponent } from './ticket/ticket.component';
     MatIconModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [PosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
