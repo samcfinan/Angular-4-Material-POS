@@ -12,11 +12,11 @@ export class TicketComponent implements OnInit {
 
   ticket: Item[] = [];
 
-  items = ITEMS;
   cartTotal = 0;
 
   constructor(private ticketSync: PosService) { }
 
+  // Sync with ticketSync service on init
   ngOnInit() {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
     this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
@@ -34,12 +34,14 @@ export class TicketComponent implements OnInit {
     this.calculateTotal();
   }
 
+  // Remove item from ticket
   removeItem(item: Item) {
     // Check if item is in array
     if (this.ticket.includes(item)) {
       // Splice the element out of the array
       const index = this.ticket.indexOf(item);
       if (index > -1) {
+        // Set item quantity back to 1 (thus when readded, quantity isn't 0)
         this.ticket[this.ticket.indexOf(item)].quantity = 1;
         this.ticket.splice(index, 1);
       }
@@ -68,14 +70,17 @@ export class TicketComponent implements OnInit {
       total += (item.price * item.quantity);
     });
     this.cartTotal = total;
+    // Sync total with ticketSync service.
     this.ticketSync.updateTotal(this.cartTotal);
   }
 
   // Remove all items from cart
   clearCart() {
+    // Reduce back to initial quantity (1 vs 0 for re-add)
     this.ticket.forEach(function(item: Item) {
       item.quantity = 1;
     });
+    // Empty local ticket variable then sync
     this.ticket = [];
     this.syncTicket();
     this.calculateTotal();
@@ -85,14 +90,8 @@ export class TicketComponent implements OnInit {
     this.ticketSync.changeTicket(this.ticket);
   }
 
+  checkout() {
+
+  }
+
 }
-
-
-// Demo content
-const ITEMS = [
-  {id: 1, name: 'Coffee', price: 2.00, quantity: 1},
-  {id: 2, name: 'Americano', price: 3.00, quantity: 1},
-  {id: 3, name: 'Cappuccino', price: 3.5, quantity: 2},
-  {id: 4, name: 'Latte', price: 3.5, quantity: 1},
-  {id: 5, name: 'Cortado', price: 3.5, quantity: 2},
-];

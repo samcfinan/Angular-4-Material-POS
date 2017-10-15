@@ -25,6 +25,16 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   cursor: pointer;
 }
+.item:hover {
+  background-color: grey;
+  color: white;
+  opacity: 0.6;
+}
+.item:active {
+  background-color: grey;
+  color: white;
+  opacity: 0.8;
+}
 
 .item-img {
   height: 100px;
