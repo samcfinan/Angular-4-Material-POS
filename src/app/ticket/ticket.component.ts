@@ -19,7 +19,7 @@ export class TicketComponent implements OnInit {
 
   ngOnInit() {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
-    this.calculateTotal();
+    this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
   }
 
   // Add item to ticket.
@@ -40,6 +40,7 @@ export class TicketComponent implements OnInit {
       // Splice the element out of the array
       const index = this.ticket.indexOf(item);
       if (index > -1) {
+        this.ticket[this.ticket.indexOf(item)].quantity = 1;
         this.ticket.splice(index, 1);
       }
     }
@@ -67,10 +68,14 @@ export class TicketComponent implements OnInit {
       total += (item.price * item.quantity);
     });
     this.cartTotal = total;
+    this.ticketSync.updateTotal(this.cartTotal);
   }
 
   // Remove all items from cart
   clearCart() {
+    this.ticket.forEach(function(item: Item) {
+      item.quantity = 1;
+    });
     this.ticket = [];
     this.syncTicket();
     this.calculateTotal();

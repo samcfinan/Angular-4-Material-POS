@@ -7,12 +7,21 @@ export class PosService {
 
   private ticket = TICKET;
   private ticketSource = new BehaviorSubject<Item[]>(this.ticket);
+
+  private cartTotal = 0;
+  private cartTotalSource = new BehaviorSubject<number>(this.cartTotal);
+
   currentTicket = this.ticketSource.asObservable();
+  currentTotal = this.cartTotalSource.asObservable();
 
   constructor() { }
 
   changeTicket(ticket: Item[]) {
     this.ticketSource.next(ticket);
+  }
+
+  updateTotal(total: number) {
+    this.cartTotalSource.next(total);
   }
 
 }

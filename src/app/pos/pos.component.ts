@@ -11,11 +11,13 @@ export class PosComponent implements OnInit {
 
   menu = MENU;
   ticket: Item[];
+  cartTotal = 0;
 
   constructor(private ticketSync: PosService) { }
 
   ngOnInit() {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
+    this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
   }
 
   addToCheck(item: Item) {
@@ -25,6 +27,18 @@ export class PosComponent implements OnInit {
     } else {
       this.ticket.push(item);
     }
+    this.calculateTotal();
+  }
+
+  // Calculate cart total
+  calculateTotal() {
+    let total = 0;
+    // Multiply item price by item quantity, add to total
+    this.ticket.forEach(function(item: Item) {
+      total += (item.price * item.quantity);
+    });
+    this.cartTotal = total;
+    this.ticketSync.updateTotal(this.cartTotal);
   }
 
   syncTicket() {
