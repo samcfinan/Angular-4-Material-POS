@@ -7,8 +7,7 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
 
 .heading {
-  background-color: $main-color;
-  color:white;
+  color: $main-color;
   font-family: $main-font;
 }
 
@@ -36,14 +35,10 @@
 
 
 .summary {
-  background-color: $main-color;
-  height: 3rem;
   margin-top: auto;
 }
 
 .total {
-  color: white;
-  font-family: $body-font;
   padding: 0.75rem;
 }
 
@@ -56,11 +51,9 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-button {
-  margin-right: 1rem;
-}
+
 
 .checkout {
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
   background-color: rgb(214, 102, 102);
 }
