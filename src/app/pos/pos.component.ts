@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Item } from '../item';
 import { PosService } from '../pos.service';
+import {MatTabsModule} from '@angular/material';
+
 
 @Component({
   selector: 'app-pos',
@@ -9,7 +11,8 @@ import { PosService } from '../pos.service';
 })
 export class PosComponent implements OnInit {
 
-  menu = MENU;
+  drink = DRINK;
+  food = EAT;
   ticket: Item[];
   cartTotal = 0;
 
@@ -48,7 +51,7 @@ export class PosComponent implements OnInit {
 
 }
 
-const MENU: Item[] = [
+const DRINK: Item[] = [
   {id: 1, name: 'Drip Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 1},
   {id: 2, name: 'Americano', price: 3.15, img: '../../assets/menu-images/americano.png', quantity: 1},
   {id: 3, name: 'Cappuccino', price: 3.50, img: '../../assets/menu-images/cappuccino.jpg', quantity: 1},
@@ -57,6 +60,19 @@ const MENU: Item[] = [
   {id: 6, name: 'Tea', price: 2.25, img: '../../assets/menu-images/tea.jpg', quantity: 1},
   {id: 7, name: 'Tea Latte', price: 3.50, img: '../../assets/menu-images/tea-latte.jpg', quantity: 1},
   {id: 8, name: 'Matcha Latte', price: 4.25, img: '../../assets/menu-images/matcha-latte.jpg', quantity: 1}
+  // {id: 9, name: 'Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 0},
+  // {id: 10, name: 'Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 0}
+];
+
+const EAT: Item[] = [
+  {id: 9, name: 'Croissant', price: 2.50, img: '../../assets/menu-images/croissant.jpg', quantity: 1},
+  {id: 10, name: 'Choc. Croissant', price: 2.75, img: '../../assets/menu-images/chocolate-croissant.jpg', quantity: 1},
+  {id: 11, name: 'Bagel', price: 2.25, img: '../../assets/menu-images/bagel.jpg', quantity: 1},
+  {id: 12, name: 'Blueberry Oat', price: 3.50, img: '../../assets/menu-images/blueberry-oatmeal.jpg', quantity: 1},
+  {id: 13, name: 'Pumpkin Scone', price: 3.50, img: '../../assets/menu-images/pumpkin-scone.jpg', quantity: 1},
+  {id: 14, name: 'Bacon & Gouda', price: 4.25, img: '../../assets/menu-images/bacon-gouda.jpg', quantity: 1},
+  {id: 15, name: 'Chorizo', price: 4.45, img: '../../assets/menu-images/chorizo.jpg', quantity: 1},
+  {id: 16, name: 'Sausage & Egg', price: 4.25, img: '../../assets/menu-images/sausage-egg.jpg', quantity: 1}
   // {id: 9, name: 'Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 0},
   // {id: 10, name: 'Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 0}
 ];
