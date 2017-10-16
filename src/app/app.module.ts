@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +30,8 @@ import { PosService } from './pos.service';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [PosService],
   bootstrap: [AppComponent]
