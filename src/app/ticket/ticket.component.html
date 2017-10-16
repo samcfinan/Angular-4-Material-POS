@@ -21,7 +21,7 @@
     <h3 class="total">Total: ${{cartTotal}}</h3>
     <div class="flex flex-direction-row buttons">
       <button class="" mat-raised-button (click)="clearCart()">Clear</button>
-      <button class="checkout" mat-raised-button>Checkout</button>      
+      <button class="checkout" mat-raised-button (click)="checkout()">Checkout</button>      
     </div>
   </mat-card-actions>
 </mat-card>

@@ -1,3 +1,14 @@
-<p>
-  history works!
-</p>
+<mat-card>
+  <mat-card-title>Past Orders</mat-card-title>
+  <mat-list>
+    <mat-list-item *ngFor="let item of history" class="flex flex-direction-row add-margin">
+      <mat-icon mat-list-icon  class="add-margin">access_time</mat-icon>
+      <h4 class="order-detail add-margin">{{item.orderNumber}}</h4>
+      <h4 class="order-detail add-margin">Items: {{item.cartNumItems}}</h4>
+      <h4 class="order-detail add-margin">Total: ${{item.cartTotal}}</h4>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+
+</mat-card>

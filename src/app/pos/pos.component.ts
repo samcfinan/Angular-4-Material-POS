@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Item } from '../item';
+import { Item, Order } from '../item';
 import { PosService } from '../pos.service';
 import {MatTabsModule} from '@angular/material';
 
@@ -15,12 +15,14 @@ export class PosComponent implements OnInit {
   food = EAT;
   ticket: Item[];
   cartTotal = 0;
+  cartNumItems = 0;
 
   constructor(private ticketSync: PosService) { }
 
   ngOnInit() {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
     this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
+    this.ticketSync.currentCartNum.subscribe(num => this.cartNumItems);
   }
 
   addToCheck(item: Item) {
@@ -36,11 +38,15 @@ export class PosComponent implements OnInit {
   // Calculate cart total
   calculateTotal() {
     let total = 0;
+    let cartNum = 0;
     // Multiply item price by item quantity, add to total
     this.ticket.forEach(function(item: Item) {
       total += (item.price * item.quantity);
+      cartNum += item.quantity;
     });
     this.cartTotal = total;
+    this.cartNumItems = cartNum;
+    this.ticketSync.updateNumItems(this.cartNumItems);
     this.ticketSync.updateTotal(this.cartTotal);
   }
 

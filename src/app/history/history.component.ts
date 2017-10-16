@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
+import { Order, Item } from '../item';
 
 @Component({
   selector: 'app-history',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  history: any;
+
+  constructor(private db: DatabaseService) {
+
+  }
 
   ngOnInit() {
+    this.db.getTicketList().subscribe(data => this.history = data);
   }
 
 }

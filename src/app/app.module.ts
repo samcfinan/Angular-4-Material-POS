@@ -16,6 +16,14 @@ import { TicketComponent } from './ticket/ticket.component';
 
 import { PosService } from './pos.service';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { DatabaseService } from './database.service';
+
+export const firebaseConfig = environment.firebaseConfig;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +39,12 @@ import { PosService } from './pos.service';
     MatButtonModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [PosService],
+  providers: [PosService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
