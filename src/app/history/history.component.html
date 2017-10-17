@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Past Orders</mat-card-title>
   <mat-list>
-    <mat-list-item *ngFor="let item of (history | slice:history.length-10 )" class="flex flex-direction-row add-margin">
+    <mat-list-item *ngFor="let item of (history | slice:history?.length-10 )" class="flex flex-direction-row add-margin">
       <mat-icon mat-list-icon  class="order-detail ">access_time</mat-icon>
       <h4 class="order-detail">{{item.orderNumber | date:'short'}}</h4>
       <h4 class="order-detail">Items: {{item.cartNumItems}}</h4>
