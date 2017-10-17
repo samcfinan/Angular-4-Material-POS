@@ -5,3 +5,8 @@
   margin-top: 0.5rem;
   margin-right: 0.5rem;
 }
+
+.history {
+  display: flex;
+  flex-direction: column-reverse;
+}
