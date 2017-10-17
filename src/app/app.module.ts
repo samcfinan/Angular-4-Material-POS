@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CoreModule } from './core/core.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material';
@@ -42,7 +43,8 @@ export const firebaseConfig = environment.firebaseConfig;
     MatCardModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CoreModule
   ],
   providers: [PosService, DatabaseService],
   bootstrap: [AppComponent]
