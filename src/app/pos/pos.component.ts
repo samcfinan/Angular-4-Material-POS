@@ -59,7 +59,7 @@ export class PosComponent implements OnInit {
 
 const DRINK: Item[] = [
   {id: 1, name: 'Drip Coffee', price: 2.25, img: '../../assets/menu-images/drip-coffee.jpg', quantity: 1},
-  {id: 2, name: 'Americano', price: 3.15, img: '../../assets/menu-images/americano.png', quantity: 1},
+  {id: 2, name: 'Americano', price: 3.15, img: '../../assets/menu-images/americano.jpg', quantity: 1},
   {id: 3, name: 'Cappuccino', price: 3.50, img: '../../assets/menu-images/cappuccino.jpg', quantity: 1},
   {id: 4, name: 'Cortado', price: 3.50, img: '../../assets/menu-images/cortado.jpg', quantity: 1},
   {id: 5, name: 'Latte', price: 3.50, img: '../../assets/menu-images/latte.jpg', quantity: 1},
