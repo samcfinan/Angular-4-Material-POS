@@ -15,7 +15,7 @@ export class DatabaseService {
   }
 
   getTicketList() {
-    return this.afs.collection('past_orders', ref => ref.orderBy('orderNumber')).valueChanges();
+    return this.afs.collection('past_orders', ref => ref.orderBy('orderNumber').limit(10)).valueChanges();
   }
 
   pushData(itemList: Item[], total: number, cartNumItems: number) {
