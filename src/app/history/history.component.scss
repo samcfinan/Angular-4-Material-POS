@@ -10,3 +10,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.line-item:hover {
+  background-color: rgb(190, 190, 190);
+  cursor: pointer;
+}
