@@ -99,7 +99,7 @@ export class TicketComponent implements OnInit {
 
   checkout() {
     if (this.ticket.length > 0) {
-      this.db.pushData(this.ticket, this.cartTotal, this.cartNumItems);
+      this.db.pushOrder(this.ticket, this.cartTotal, this.cartNumItems);
       this.clearCart();
     }
   }

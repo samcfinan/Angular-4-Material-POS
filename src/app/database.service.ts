@@ -11,6 +11,7 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore, private firebaseApp: FirebaseApp) {
     const storage = firebaseApp.storage().ref();
+    console.log(storage);
     this.past_orders = this.afs.collection<Order>('past_orders');
   }
 
@@ -18,7 +19,7 @@ export class DatabaseService {
     return this.afs.collection('past_orders', ref => ref.orderBy('orderNumber').limit(10)).valueChanges();
   }
 
-  pushData(itemList: Item[], total: number, cartNumItems: number) {
+  pushOrder(itemList: Item[], total: number, cartNumItems: number) {
     const date = Date.now().toString();
     const ticket: Order = {orderNumber: date, items: itemList, cartTotal: total, cartNumItems: cartNumItems};
     this.past_orders.add(ticket);
