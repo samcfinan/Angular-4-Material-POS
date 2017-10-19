@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './core/app-routing.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material';
@@ -24,6 +25,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { DatabaseService } from './database.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -36,9 +38,11 @@ export const firebaseConfig = environment.firebaseConfig;
     PosComponent,
     TicketComponent,
     WelcomeComponent,
-    AdminComponent
+    AdminComponent,
+    TransactionsComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     MatIconModule,
     MatButtonModule,

@@ -11,7 +11,6 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore, private firebaseApp: FirebaseApp) {
     const storage = firebaseApp.storage().ref();
-    console.log(storage);
     this.past_orders = this.afs.collection<Order>('past_orders');
   }
 
