@@ -1,0 +1,23 @@
+@import '../app.component.scss';
+
+.container {
+  margin: 2rem;
+}
+
+.items {
+  width: 100%;
+}
+
+th {
+  font-family: $main-font;
+  text-align: left;
+}
+
+td, th {
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

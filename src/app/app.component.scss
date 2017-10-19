@@ -7,6 +7,12 @@ $body-font: 'Hind Madurai';
 p {
   font-family: $body-font;
 }
+
+h1 {
+  font-family: $main-font;
+  font-size: 2rem;
+}
+
 h3 {
   font-family: $body-font;
   font-size: 1.15rem;

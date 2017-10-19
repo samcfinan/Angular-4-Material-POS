@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
+import { Order, Item } from '../item';
 
 @Component({
   selector: 'app-transactions',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsComponent implements OnInit {
 
-  constructor() { }
+  history: any;
+
+  constructor(private db: DatabaseService) { }
 
   ngOnInit() {
+    this.db.getTicketList(5).subscribe(data => this.history = data);
   }
 
 }

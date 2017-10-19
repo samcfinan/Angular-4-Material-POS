@@ -1,3 +1,27 @@
-<p>
-  transactions works!
-</p>
+<div class="flex flex-direction-column justify-center add-margin container">
+  <mat-card class="add-margin">
+    <mat-card-title>Transaction History</mat-card-title>
+    <mat-card-subtitle>View a complete transaction history using sort filters</mat-card-subtitle>
+    <mat-card-content>
+      <table class="items">
+        <tr class="table-header">
+          <th>Transaction #</th>
+          <th>Items</th>
+          <th>Cart Total</th>
+          <th>Delete?</th>
+        </tr>
+        <tr *ngFor="let item of history" class="item">
+          <td>{{item.orderNumber | date:'short'}}</td>
+          <td></td>
+          <td>{{item.cartTotal | currency:'USD':true}}</td>
+          <td>
+            <mat-icon class="del">cancel</mat-icon>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
