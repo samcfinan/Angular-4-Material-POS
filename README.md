@@ -1,6 +1,13 @@
-# DummyPOS
+# Angular 4 POS
+
+A basic point-of-sale demo application built in Angular 4. This project uses Angular Material UI elements (https://material.angular.io) and a Firebase Cloud Firestore backend.
+
+The purpose is to demonstrate a simple POS using modern frameworks. Users can perform transactions, add/modify products, create new user accounts, and see a paginated transaction history.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+
+Project built by Sam Finan (www.samfinan.com) for fun & games.
+
 
 ## Development server
 
