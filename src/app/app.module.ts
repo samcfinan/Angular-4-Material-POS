@@ -27,6 +27,7 @@ import { DatabaseService } from './database.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -40,7 +41,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TicketComponent,
     WelcomeComponent,
     AdminComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     AppRoutingModule,
