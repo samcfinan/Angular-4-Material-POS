@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Order #: <br>{{this.data.orderNumber | date:'short'}}</h1>
+<mat-dialog-content>
+  <h3 class="num-items">Items: {{this.data.numItems}}</h3>
+  <li *ngFor="let item of this.data.items" class="flex flex-direction-row align-items-center" class="line-item">
+    <p>{{item.name}}</p>
+    <p>{{item.price | currency:'USD':true}}</p>
+    <p>Qty: {{item.quantity}}</p>
+    <hr>
+  </li>
+  <h3 class="total">Total: {{this.data.total | currency:'USD':true}}</h3>
+</mat-dialog-content>

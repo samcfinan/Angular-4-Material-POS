@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +29,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LineItemModalComponent } from './history/line-item-modal/line-item-modal.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -42,7 +44,8 @@ export const firebaseConfig = environment.firebaseConfig;
     WelcomeComponent,
     AdminComponent,
     TransactionsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LineItemModalComponent
   ],
   imports: [
     AppRoutingModule,
@@ -53,12 +56,14 @@ export const firebaseConfig = environment.firebaseConfig;
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,
     AngularFirestoreModule
   ],
   providers: [PosService, DatabaseService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LineItemModalComponent]
 })
 export class AppModule { }

@@ -4,6 +4,13 @@ $main-font: 'Montserrat';
 $secondary-font: 'Lora';
 $body-font: 'Hind Madurai';
 
+p {
+  font-family: $body-font;
+}
+h3 {
+  font-family: $body-font;
+  font-size: 1.15rem;
+}
 
 .text-align-center {
   text-align: center;
