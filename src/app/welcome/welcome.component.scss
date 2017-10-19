@@ -1,5 +1,15 @@
 @import '../app.component.scss';
 
 .container {
-  height: 90vh;
+  height: 80vh;
+}
+
+button {
+  width: 10rem;
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    flex-direction: column;
+  }
 }
