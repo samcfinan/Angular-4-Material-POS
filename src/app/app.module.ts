@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material';
 import {MatCardModule} from '@angular/material';
+import {MatGridListModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -49,6 +50,7 @@ export const firebaseConfig = environment.firebaseConfig;
     MatTabsModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatGridListModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,
