@@ -22,6 +22,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { DatabaseService } from './database.service';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -32,7 +34,9 @@ export const firebaseConfig = environment.firebaseConfig;
     NavComponent,
     HistoryComponent,
     PosComponent,
-    TicketComponent
+    TicketComponent,
+    WelcomeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
