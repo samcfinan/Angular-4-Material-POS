@@ -14,8 +14,8 @@ export class DatabaseService {
     const storage = firebaseApp.storage().ref();
   }
 
-  getTicketList() {
-    return this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10)).valueChanges();
+  getTicketList(returnLast: number) {
+    return this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(returnLast)).valueChanges();
   }
 
   pushOrder(itemList: Item[], total: number, cartNumItems: number) {

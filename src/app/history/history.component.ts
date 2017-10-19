@@ -16,7 +16,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.db.getTicketList().subscribe(data => this.history = data);
+    this.db.getTicketList(10).subscribe(data => this.history = data);
   }
 
 }
