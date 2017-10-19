@@ -7,15 +7,15 @@ import { Item, Order } from './item';
 @Injectable()
 export class DatabaseService {
 
-  private past_orders: AngularFirestoreCollection<Order>;
+  private history;
+  private past_orders = this.afs.collection<Order>('past_orders');
 
   constructor(private afs: AngularFirestore, private firebaseApp: FirebaseApp) {
     const storage = firebaseApp.storage().ref();
-    this.past_orders = this.afs.collection<Order>('past_orders');
   }
 
   getTicketList() {
-    return this.afs.collection('past_orders', ref => ref.orderBy('orderNumber').limit(10)).valueChanges();
+    return this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10)).valueChanges();
   }
 
   pushOrder(itemList: Item[], total: number, cartNumItems: number) {

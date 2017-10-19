@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Recent Transactions</mat-card-title>
   <mat-list class="history">
-    <mat-list-item *ngFor="let item of (history | slice:history?.length-10 )" class="flex flex-direction-row">
+    <mat-list-item *ngFor="let item of history" class="flex flex-direction-row">
       <mat-icon mat-list-icon  class="order-detail ">access_time</mat-icon>
       <h4 class="order-detail">{{item.orderNumber | date:'short'}}</h4>
       <h4 class="order-detail">Items: {{item.cartNumItems}}</h4>
