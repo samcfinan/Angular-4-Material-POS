@@ -14,7 +14,11 @@ export class TransactionsComponent implements OnInit {
   constructor(private db: DatabaseService) { }
 
   ngOnInit() {
-    this.db.getTicketList(5).subscribe(data => this.history = data);
+    this.db.getOrderFeed(25).subscribe(data => this.history = data);
+  }
+
+  getNextPage() {
+    this.db.getNextPage();
   }
 
 }

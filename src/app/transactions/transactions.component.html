@@ -1,19 +1,28 @@
 <div class="flex flex-direction-column justify-center add-margin container">
   <mat-card class="add-margin">
+    <!-- Header and description -->
     <mat-card-title>Transaction History</mat-card-title>
-    <mat-card-subtitle>View a complete transaction history using sort filters</mat-card-subtitle>
+    <mat-card-subtitle>View a complete transaction history with pagination. Click on an order to view details and full item list.</mat-card-subtitle>
+    <!-- Table -->
     <mat-card-content>
       <table class="items">
+        <!-- Table headers -->
         <tr class="table-header">
           <th>Transaction #</th>
           <th>Items</th>
           <th>Cart Total</th>
           <th>Delete?</th>
         </tr>
-        <tr *ngFor="let item of history" class="item">
-          <td>{{item.orderNumber | date:'short'}}</td>
-          <td></td>
-          <td>{{item.cartTotal | currency:'USD':true}}</td>
+        <!-- Iterate over history -->
+        <tr *ngFor="let order of history" class="item">
+          <td>{{order.orderNumber | date:'short'}}</td>
+          <td>
+            <li *ngFor="let item of order.items; let i=index">
+              <p *ngIf="i < 2">{{item.name}}</p>
+            </li>
+            <li>...</li>
+          </td>
+          <td>{{order.cartTotal | currency:'USD':true}}</td>
           <td>
             <mat-icon class="del">cancel</mat-icon>
           </td>
@@ -21,7 +30,7 @@
       </table>
     </mat-card-content>
     <mat-card-actions>
-
+      <button mat-button (click)="getNextPage()">Next Page</button>
     </mat-card-actions>
   </mat-card>
 </div>

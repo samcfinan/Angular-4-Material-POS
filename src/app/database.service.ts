@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { FirebaseApp } from 'angularfire2';
+import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Item, Order } from './item';
@@ -14,9 +15,19 @@ export class DatabaseService {
     const storage = firebaseApp.storage().ref();
   }
 
-  getTicketList(returnLast: number) {
+  getTimestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
+  }
+
+  getOrderFeed(returnLast: number) {
     return this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(returnLast)).valueChanges();
   }
+
+  getNextPage() {
+    const firstPage = this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(25)).ref.get();
+    console.log('last', firstPage);
+  }
+
 
   pushOrder(itemList: Item[], total: number, cartNumItems: number) {
     const date = Date.now().toString();

@@ -1,7 +1,7 @@
 @import '../app.component.scss';
 
 .container {
-  margin: 2rem;
+  margin: 1.5rem;
 }
 
 .items {
@@ -20,4 +20,10 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    margin: 0;
+  }
 }
