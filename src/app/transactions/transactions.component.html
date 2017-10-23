@@ -2,7 +2,13 @@
   <mat-card class="add-margin">
     <!-- Header and description -->
     <mat-card-title>Transaction History</mat-card-title>
-    <mat-card-subtitle>View a complete transaction history with pagination. Click on an order to view details and full item list.</mat-card-subtitle>
+    <mat-card-subtitle>View a complete transaction history with pagination. Click on an order to view details and full item list.</mat-card-subtitle>    
+    <mat-form-field>
+      <mat-select placeholder="Display rows:" [(ngModel)]="displayRows" (ngModelChange)="renderNewRows()">
+        <mat-option *ngFor="let option of rowOptions" [value]="option">{{option}}</mat-option>      
+      </mat-select>
+    </mat-form-field>
+    
     <!-- Table -->
     <mat-card-content>
       <table class="items">
@@ -29,8 +35,5 @@
         </tr>
       </table>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="getNextPage()">Next Page</button>
-    </mat-card-actions>
   </mat-card>
 </div>

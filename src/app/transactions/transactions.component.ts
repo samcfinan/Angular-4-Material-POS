@@ -13,11 +13,17 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class TransactionsComponent implements OnInit {
 
   history: any;
+  displayRows;
+  rowOptions = [25, 50, 100, 200];
 
   constructor(private db: DatabaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.db.getOrderFeed(25).subscribe(data => this.history = data);
+  }
+
+  renderNewRows() {
+    this.db.getOrderFeed(this.displayRows).subscribe(data => this.history = data);
   }
 
   openDialog(lineItem: Order): void {
@@ -28,10 +34,6 @@ export class TransactionsComponent implements OnInit {
         items: lineItem.items,
         total: lineItem.cartTotal }
     });
-  }
-
-  getNextPage() {
-    this.db.getNextPage();
   }
 
 }

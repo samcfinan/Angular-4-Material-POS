@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './core/app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogModule} from '@angular/material';
+import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogModule, MatSelectModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -52,6 +53,8 @@ export const firebaseConfig = environment.firebaseConfig;
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
+    MatSelectModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,

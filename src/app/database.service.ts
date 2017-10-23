@@ -15,18 +15,9 @@ export class DatabaseService {
     const storage = firebaseApp.storage().ref();
   }
 
-  getTimestamp() {
-    return firebase.firestore.FieldValue.serverTimestamp();
-  }
-
   getOrderFeed(returnLast: number) {
     return this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(returnLast)).valueChanges();
   }
-
-  getNextPage() {
-    const firstPage = this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(25)).ref.get();
-  }
-
 
   pushOrder(itemList: Item[], total: number, cartNumItems: number) {
     const date = Date.now().toString();
