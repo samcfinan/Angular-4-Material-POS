@@ -15,14 +15,14 @@
         </tr>
         <!-- Iterate over history -->
         <tr *ngFor="let order of history" class="item">
-          <td>{{order.orderNumber | date:'short'}}</td>
-          <td>
+          <td (click)="openDialog(order)">{{order.orderNumber | date:'short'}}</td>
+          <td (click)="openDialog(order)">
             <li *ngFor="let item of order.items; let i=index">
               <p *ngIf="i < 2">{{item.name}}</p>
             </li>
             <li>...</li>
           </td>
-          <td>{{order.cartTotal | currency:'USD':true}}</td>
+          <td (click)="openDialog(order)">{{order.cartTotal | currency:'USD':true}}</td>
           <td>
             <mat-icon class="del">cancel</mat-icon>
           </td>
