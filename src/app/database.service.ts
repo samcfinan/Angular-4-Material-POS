@@ -25,7 +25,6 @@ export class DatabaseService {
 
   getNextPage() {
     const firstPage = this.afs.collection<Order>('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(25)).ref.get();
-    console.log('last', firstPage);
   }
 
 
