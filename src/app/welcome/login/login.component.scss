@@ -1,7 +1,7 @@
 @import '../../app.component.scss';
 
 .container {
-  height: 91vh;
+  min-height: 77vh;
 }
 
 .login-form {
@@ -11,6 +11,7 @@
 .guest {
   background-color: rgb(141, 141, 141);
   color: white;
+  margin-left: 1rem;
 }
 
 @media screen and (max-width: 768px) {
