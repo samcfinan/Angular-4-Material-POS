@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../item';
-import { PosService } from '../pos.service';
-import { DatabaseService } from '../database.service';
+import { Item } from '../../item';
+import { PosService } from '../../pos.service';
+import { DatabaseService } from '../../database.service';
 
 
 @Component({

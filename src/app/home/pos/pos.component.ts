@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Item, Order } from '../item';
-import { PosService } from '../pos.service';
+import { Item, Order } from '../../item';
+import { PosService } from '../../pos.service';
 import {MatTabsModule} from '@angular/material';
 
 
