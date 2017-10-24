@@ -19,7 +19,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.db.getOrderFeed(10).subscribe(data => this.history = data);
+    this.history = this.db.getSnapshot();
   }
 
   openDialog(lineItem: Order): void {

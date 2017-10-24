@@ -20,7 +20,7 @@
           <th>Delete?</th>
         </tr>
         <!-- Iterate over history -->
-        <tr *ngFor="let order of history" class="item">
+        <tr *ngFor="let order of history | async" class="item">
           <td (click)="openDialog(order)">{{order.orderNumber | date:'short'}}</td>
           <td (click)="openDialog(order)">
             <li *ngFor="let item of order.items; let i=index">
@@ -30,7 +30,7 @@
           </td>
           <td (click)="openDialog(order)">{{order.cartTotal | currency:'USD':true}}</td>
           <td>
-            <mat-icon class="del">cancel</mat-icon>
+            <mat-icon class="del" (click)="deleteOrder(order.id)">cancel</mat-icon>
           </td>
         </tr>
       </table>
