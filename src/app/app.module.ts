@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogModule, MatSelectModule} from '@angular/material';
+import {MatIconModule, MatButtonModule, MatCardModule, MatDialogModule, MatSelectModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -41,7 +41,6 @@ export const firebaseConfig = environment.firebaseConfig;
     BrowserModule,
     MatIconModule,
     MatButtonModule,
-    MatTabsModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
@@ -50,7 +49,8 @@ export const firebaseConfig = environment.firebaseConfig;
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HomeModule
   ],
   providers: [PosService, DatabaseService],
   bootstrap: [AppComponent],

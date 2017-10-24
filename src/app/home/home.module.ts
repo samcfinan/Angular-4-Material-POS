@@ -4,14 +4,20 @@ import { CommonModule } from '@angular/common';
 import { HistoryComponent } from './history/history.component';
 import { PosComponent } from './pos/pos.component';
 import { TicketComponent } from './ticket/ticket.component';
-
 import { HomeComponent } from './home.component';
-
 import { LineItemModalComponent } from './history/line-item-modal/line-item-modal.component';
+
+import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogModule} from '@angular/material';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatTabsModule
   ],
   declarations: [
     HomeComponent,
