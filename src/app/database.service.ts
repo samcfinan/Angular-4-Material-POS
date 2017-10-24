@@ -18,6 +18,10 @@ export class DatabaseService {
     return this.ordersCollection.valueChanges();
   }
 
+  updateNumRequested(num) {
+    this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(num));
+  }
+
   getSnapshot() {
     return this.ordersCollection.snapshotChanges().map(actions => {
       return actions.map(a => {

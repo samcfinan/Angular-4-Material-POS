@@ -19,6 +19,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.db.updateNumRequested(10);
     this.history = this.db.getSnapshot();
   }
 

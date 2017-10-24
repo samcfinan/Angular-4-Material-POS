@@ -21,10 +21,13 @@ export class TransactionsComponent implements OnInit {
   constructor(private db: DatabaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.history = this.db.getSnapshot();
+    this.displayRows = 25;
+    this.renderNewRows();
   }
 
   renderNewRows() {
+    this.db.updateNumRequested(this.displayRows);
+    this.history = this.db.getSnapshot();
   }
 
   openDialog(lineItem: Order): void {
