@@ -1,0 +1,13 @@
+@import '../../app.component.scss';
+
+.container {
+  height: 91vh;
+}
+
+.login-form {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  max-width: 50%;
+}

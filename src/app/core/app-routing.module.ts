@@ -7,9 +7,11 @@ import { HomeComponent } from '../home/home.component';
 import { TransactionsComponent } from '../home/transactions/transactions.component';
 import { AdminComponent } from '../admin/admin/admin.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { LoginComponent } from '../welcome/login/login.component';
 
 const appRoutes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'transactions', component: TransactionsComponent },

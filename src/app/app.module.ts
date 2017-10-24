@@ -5,13 +5,14 @@ import { AppRoutingModule } from './core/app-routing.module';
 import { HomeModule } from './home/home.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatMenuModule, MatIconModule, MatButtonModule, MatCardModule} from '@angular/material';
+import {MatMenuModule, MatIconModule, MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 
 
 import { PosService } from './pos.service';
+import { AuthService } from './core/auth.service';
 
 import { environment } from '../environments/environment';
 
@@ -22,6 +23,7 @@ import { DatabaseService } from './database.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './welcome/login/login.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -31,7 +33,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NavComponent,
     WelcomeComponent,
     AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -41,13 +44,15 @@ export const firebaseConfig = environment.firebaseConfig;
     BrowserAnimationsModule,
     MatCardModule,
     MatMenuModule,
+    MatInputModule,
+    MatFormFieldModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,
     AngularFirestoreModule,
     HomeModule
   ],
-  providers: [PosService, DatabaseService],
+  providers: [PosService, DatabaseService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
