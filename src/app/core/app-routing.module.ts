@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { HomeComponent } from '../home/home.component';
-import { TransactionsComponent } from '../transactions/transactions.component';
+import { TransactionsComponent } from '../home/transactions/transactions.component';
 import { AdminComponent } from '../admin/admin/admin.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 

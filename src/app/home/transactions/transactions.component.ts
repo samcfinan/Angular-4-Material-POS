@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../database.service';
-import { Order, Item } from '../item';
-import { LineItemModalComponent } from '../home/history/line-item-modal/line-item-modal.component';
+import { DatabaseService } from '../../database.service';
+import { Order, Item } from '../../item';
+import { LineItemModalComponent } from '../../home/history/line-item-modal/line-item-modal.component';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
