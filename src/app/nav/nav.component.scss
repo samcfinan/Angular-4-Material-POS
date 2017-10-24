@@ -3,10 +3,12 @@
 .navbar {
   min-height: 3rem;
   background-color: $main-color;
+  justify-content: space-between;
 }
 
 .title {
   color: white;
+  margin-right: 0.25rem;
   font-family: $main-font;
   font-size: 1.25rem;
   cursor: pointer;
@@ -15,4 +17,8 @@
 .subtitle {
   color: white;
   font-family: $secondary-font;
+}
+
+.menu {
+  color: white;
 }

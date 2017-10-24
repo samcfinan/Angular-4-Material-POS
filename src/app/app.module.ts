@@ -5,7 +5,7 @@ import { AppRoutingModule } from './core/app-routing.module';
 import { HomeModule } from './home/home.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatIconModule, MatButtonModule, MatCardModule} from '@angular/material';
+import {MatMenuModule, MatIconModule, MatButtonModule, MatCardModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -40,6 +40,7 @@ export const firebaseConfig = environment.firebaseConfig;
     MatButtonModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     CoreModule,
