@@ -13,15 +13,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class TransactionsComponent implements OnInit {
 
   history;
-  content;
 
-  displayRows;
+  displayRows = 25;
   rowOptions = [25, 50, 100, 200];
 
   constructor(private db: DatabaseService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.displayRows = 25;
     this.renderNewRows();
   }
 
@@ -43,5 +41,7 @@ export class TransactionsComponent implements OnInit {
   deleteOrder(id) {
     this.db.deleteOrder(id);
   }
+
+  getLastOrderId() {}
 
 }

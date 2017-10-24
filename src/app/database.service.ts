@@ -1,6 +1,4 @@
 import { Injectable, Inject } from '@angular/core';
-import * as firebase from 'firebase/app';
-import 'firebase/storage';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Item, Order } from './item';
 
@@ -12,10 +10,6 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore) {
     this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10));
-  }
-
-  getOrderFeed(returnLast: number) {
-    return this.ordersCollection.valueChanges();
   }
 
   updateNumRequested(num) {

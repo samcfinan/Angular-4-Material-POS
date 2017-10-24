@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.del:hover {
+  color: grey;
+}
+
 th {
   font-family: $main-font;
   text-align: left;
