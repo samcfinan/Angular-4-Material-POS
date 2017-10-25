@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { HomeComponent } from '../home/home.component';
@@ -10,19 +11,21 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { LoginComponent } from '../welcome/login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'welcome', component: WelcomeComponent },
-  { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'transactions', component: TransactionsComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'transactions', component: TransactionsComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
+  providers: [AuthGuard],
   exports: [RouterModule],
   declarations: []
 })

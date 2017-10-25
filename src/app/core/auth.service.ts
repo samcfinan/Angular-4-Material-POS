@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 interface User {
   uid: string;
@@ -43,9 +44,21 @@ export class AuthService {
     });
   }
 
+  anonymousLogin() {
+    return this.afAuth.auth.signInAnonymously()
+      .then((user) => {
+        this.authState = user;
+        console.log('Login success');
+        this.router.navigate(['/welcome']);
+      });
+  }
+
   signOut(): void {
-    this.afAuth.auth.signOut();
-    this.router.navigate(['/']);
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/']);
+      this.authState = null;
+    });
+    console.log('Logged out');
   }
 
 }
