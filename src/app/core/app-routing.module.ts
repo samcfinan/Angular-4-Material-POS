@@ -9,13 +9,18 @@ import { TransactionsComponent } from '../home/transactions/transactions.compone
 import { AdminComponent } from '../admin/admin/admin.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { LoginComponent } from '../welcome/login/login.component';
+import { UsersComponent  } from '../admin/users/users.component';
+import { ItemsComponent } from '../admin/items/items.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+    { path: 'users', component: UsersComponent },
+    { path: 'items', component: ItemsComponent }
+  ] },
   { path: 'transactions', component: TransactionsComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];

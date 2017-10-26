@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './core/app-routing.module';
 import { HomeModule } from './home/home.module';
+import { AdminModule } from './admin/admin.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule, MatIconModule, MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule} from '@angular/material';
@@ -21,7 +22,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { DatabaseService } from './database.service';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { AdminComponent } from './admin/admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './welcome/login/login.component';
 
@@ -32,7 +32,6 @@ export const firebaseConfig = environment.firebaseConfig;
     AppComponent,
     NavComponent,
     WelcomeComponent,
-    AdminComponent,
     PageNotFoundComponent,
     LoginComponent
   ],
@@ -50,7 +49,8 @@ export const firebaseConfig = environment.firebaseConfig;
     AngularFireAuthModule,
     CoreModule,
     AngularFirestoreModule,
-    HomeModule
+    HomeModule,
+    AdminModule
   ],
   providers: [PosService, DatabaseService, AuthService],
   bootstrap: [AppComponent],
