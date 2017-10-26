@@ -4,8 +4,40 @@
     <p>Edit and add items for sale below.</p>
   </div>
 
+  <div class="add-margin">
+    <button mat-raised-button (click)="addItemToggle()">Add Item</button>
+  </div>
 
-  <mat-accordion>
+  <mat-card *ngIf="addItemActive" class="add-margin">
+    <mat-card-title>Add Item</mat-card-title>
+    <mat-card-content>
+      <form class="form">
+          <!-- Name -->
+          <mat-form-field>
+            <input matInput placeholder="Name:" value="Item 1" name="name" [(ngModel)]="newItemName">
+          </mat-form-field>
+          <!-- Price -->
+          <mat-form-field>
+            <input matInput placeholder="Price ($):" type="number" value="3.25" name="value" [(ngModel)]="newItemPrice">
+          </mat-form-field>
+          <!-- Product type dropdown -->
+          <mat-form-field>
+            <mat-select placeholder="Product type:" name="productType" [(ngModel)]="newItemType">
+              <mat-option *ngFor="let type of productTypes" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+    </mat-card-content>
+    <!-- Save/Cancel -->
+    <mat-action-row>
+      <button mat-button (click)="addItem()">Save</button>
+      <button mat-button color="warn">Cancel</button>
+    </mat-action-row>
+  </mat-card>
+
+  <mat-accordion class="add-margin">
     <!-- Item Panel -->
     <mat-expansion-panel>
       <mat-expansion-panel-header>

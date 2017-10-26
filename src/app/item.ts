@@ -2,6 +2,7 @@ export interface Item {
   id?: number;
   name: string;
   price: number;
+  item_type: string;
   img?: String;
   quantity?: number;
 }
