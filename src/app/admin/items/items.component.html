@@ -13,7 +13,25 @@
         <mat-panel-description>Item 1 description</mat-panel-description>
       </mat-expansion-panel-header>
       <!-- Edit form -->
-      <p>Inner text</p>
+      <form class="form">
+        <!-- Name -->
+        <mat-form-field>
+          <input matInput placeholder="Name:" value="Item 1">
+        </mat-form-field>
+        <!-- Price -->
+        <mat-form-field>
+          <input matInput placeholder="Price ($):" value="3.25">
+        </mat-form-field>
+        <!-- Product type dropdown -->
+        <mat-form-field>
+          <mat-select placeholder="Product type:">
+            <mat-option *ngFor="let type of productTypes" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <!-- Save/Delete buttons -->
       <mat-action-row>
         <button mat-button>Save</button>
         <button mat-button color="warn">Delete</button>

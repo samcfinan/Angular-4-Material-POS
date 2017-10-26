@@ -8,6 +8,8 @@ import { DatabaseService } from '../../database.service';
 })
 export class ItemsComponent implements OnInit {
 
+  productTypes = ['Drink', 'Food'];
+
   constructor() { }
 
   ngOnInit() {
