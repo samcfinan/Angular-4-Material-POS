@@ -13,7 +13,7 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore) {
     this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10));
-    this.itemsCollection = this.afs.collection('items');
+    this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('item_type'));
   }
 
   updateNumRequested(num) {
@@ -45,9 +45,29 @@ export class DatabaseService {
 
   // Edit POS Items
 
+  getItem(id) {
+    return this.afs.doc<Item>('items/' + id);
+  }
+
+  deleteItem(id) {
+    return this.getItem(id).delete();
+  }
+
+  updateItem(id, itemdata: Item) {
+    return this.getItem(id).update(itemdata);
+  }
+
   pushItem(name: string, price: number, type: string) {
     const item: Item = {name: name, price: price, item_type: type, quantity: 1};
     return this.itemsCollection.add(item);
+  }
+
+  getItems() {
+    return this.itemsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        return { id: a.payload.doc.id, ...a.payload.doc.data() };
+      });
+    });
   }
 
 }

@@ -39,24 +39,24 @@
 
   <mat-accordion class="add-margin">
     <!-- Item Panel -->
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let item of items | async">
       <mat-expansion-panel-header>
-        <mat-panel-title>Item 1</mat-panel-title>
-        <mat-panel-description>Item 1 description</mat-panel-description>
+        <mat-panel-title>{{item.name}}</mat-panel-title>
+        <mat-panel-description>{{item.item_type}}</mat-panel-description>
       </mat-expansion-panel-header>
       <!-- Edit form -->
       <form class="form">
         <!-- Name -->
         <mat-form-field>
-          <input matInput placeholder="Name:" value="Item 1">
+          <input #name matInput placeholder="Name:" value="{{item.name}}">
         </mat-form-field>
         <!-- Price -->
         <mat-form-field>
-          <input matInput placeholder="Price ($):" value="3.25">
+          <input #price matInput type="number" placeholder="Price ($):" value="{{item.price}}">
         </mat-form-field>
         <!-- Product type dropdown -->
         <mat-form-field>
-          <mat-select placeholder="Product type:">
+          <mat-select #type placeholder="{{item.item_type}}" value="{{item.item_type}}">
             <mat-option *ngFor="let type of productTypes" [value]="type">
               {{type}}
             </mat-option>
@@ -65,8 +65,8 @@
       </form>
       <!-- Save/Delete buttons -->
       <mat-action-row>
-        <button mat-button>Save</button>
-        <button mat-button color="warn">Delete</button>
+        <button mat-button (click)="updateItem(item.id, name.value, price.value, type.value)">Save</button>
+        <button mat-button color="warn" (click)="deleteItem(item.id)">Delete</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
