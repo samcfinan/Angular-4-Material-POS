@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  email: string;
+  password: string;
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -16,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   guestLogin() {
     this.auth.anonymousLogin();
+  }
+
+  userLogin(email, password) {
+    this.auth.emailLogin(email, password);
   }
 
 }

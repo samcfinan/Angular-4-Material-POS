@@ -5,13 +5,13 @@
     <mat-card-content>
       <form class="login-form">
         <mat-form-field>
-          <input matInput placeholder="Email">
+          <input matInput #email placeholder="Email" type="email">
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Password">
+          <input matInput #password placeholder="Password" type="password">
         </mat-form-field>
       </form>
-      <button mat-raised-button>Login</button>
+      <button mat-raised-button (click)="userLogin(email.value, password.value)">Login</button>
       <button mat-raised-button class="guest" (click)="guestLogin()">Guest</button>
     </mat-card-content>
   </mat-card>
