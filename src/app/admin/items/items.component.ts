@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../database.service';
+import { Upload } from '../../item';
 
 @Component({
   selector: 'app-items',
@@ -16,6 +17,8 @@ export class ItemsComponent implements OnInit {
   newItemType: string;
 
   items;
+  selectedFiles: FileList;
+  currentUpload: Upload;
 
   constructor(private db: DatabaseService) { }
 
@@ -35,10 +38,16 @@ export class ItemsComponent implements OnInit {
   }
 
   addItem() {
-    this.db.pushItem(this.newItemName, this.newItemPrice, this.newItemType);
+    const file = this.selectedFiles.item(0);
+    this.currentUpload = new Upload(file);
+    this.db.pushItem(this.newItemName, this.newItemPrice, this.newItemType, this.currentUpload);
     this.newItemName = null;
     this.newItemPrice = null;
     this.newItemType = null;
+  }
+
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
   }
 
   updateItem(id, name, price, item_type) {

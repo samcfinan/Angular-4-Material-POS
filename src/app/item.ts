@@ -3,7 +3,7 @@ export interface Item {
   name: string;
   price: number;
   item_type: string;
-  img?: String;
+  img?: string;
   quantity?: number;
 }
 
@@ -12,4 +12,17 @@ export interface Order {
   items?: Item[];
   cartTotal: number;
   cartNumItems?: number;
+}
+
+export class Upload {
+  $key: string;
+  file: File;
+  name: string;
+  url: string;
+  progress: number;
+  createdAt: Date = new Date();
+
+  constructor(file: File) {
+    this.file = file;
+  }
 }

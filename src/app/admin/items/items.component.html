@@ -28,10 +28,14 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+
+          <h3>Upload Image:</h3>
+          <input mat-button type="file" (change)="detectFiles($event)">
+
         </form>
     </mat-card-content>
     <!-- Save/Cancel -->
-    <mat-action-row>
+    <mat-action-row class="new-item-action-row">
       <button mat-button (click)="addItem()">Save</button>
       <button mat-button color="warn">Cancel</button>
     </mat-action-row>

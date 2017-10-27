@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Item, Order } from './item';
+import * as firebase from 'firebase';
+import { Item, Order, Upload } from './item';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DatabaseService {
@@ -10,6 +12,10 @@ export class DatabaseService {
 
   itemsCollection: AngularFirestoreCollection<Item>;
   itemDocument: AngularFirestoreDocument<Node>;
+
+  uploadsRef: AngularFirestoreCollection<Upload>;
+  uploads: Observable<Upload[]>;
+  lastUpload: Upload;
 
   constructor(private afs: AngularFirestore) {
     this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10));
@@ -57,8 +63,9 @@ export class DatabaseService {
     return this.getItem(id).update(itemdata);
   }
 
-  pushItem(name: string, price: number, type: string) {
-    const item: Item = {name: name, price: price, item_type: type, quantity: 1};
+  pushItem(name: string, price: number, type: string, image: Upload) {
+    this.pushUpload(image);
+    const item: Item = {name: name, price: price, item_type: type, quantity: 1, img: this.lastUpload.url};
     return this.itemsCollection.add(item);
   }
 
@@ -69,5 +76,29 @@ export class DatabaseService {
       });
     });
   }
+
+  pushUpload(upload: Upload) {
+    const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef.child(`${'/'}/${upload.file.name}`).put(upload.file);
+
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) =>  {
+        // upload in progress
+        const snap = snapshot as firebase.storage.UploadTaskSnapshot;
+        upload.progress = (snap.bytesTransferred / snap.totalBytes) * 100;
+      },
+      (error) => {
+        // upload failed
+        console.log(error);
+      },
+      () => {
+        // upload success
+        upload.url = uploadTask.snapshot.downloadURL;
+        upload.name = upload.file.name;
+        this.lastUpload = upload;
+      }
+    );
+  }
+
 
 }
