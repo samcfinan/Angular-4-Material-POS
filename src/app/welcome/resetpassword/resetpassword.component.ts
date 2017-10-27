@@ -23,8 +23,7 @@ export class ResetpasswordComponent implements OnInit {
   }
 
   resetPassword(email: string) {
-    this.auth.resetPassword(email);
-    this.emailSent = true;
+    this.auth.resetPassword(email).then(value => this.emailSent = true).catch((error) => this.emailSent = false);
   }
 
 }
