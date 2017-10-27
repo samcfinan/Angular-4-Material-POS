@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './core/app-routing.module';
@@ -25,6 +25,7 @@ import { DatabaseService } from './database.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './welcome/login/login.component';
+import { ResetpasswordComponent } from './welcome/resetpassword/resetpassword.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -34,7 +35,8 @@ export const firebaseConfig = environment.firebaseConfig;
     NavComponent,
     WelcomeComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    ResetpasswordComponent
   ],
   imports: [
     AppRoutingModule,
@@ -50,6 +52,7 @@ export const firebaseConfig = environment.firebaseConfig;
     AngularFireAuthModule,
     CoreModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFirestoreModule,
     HomeModule,
     AdminModule
