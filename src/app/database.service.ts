@@ -12,7 +12,7 @@ export class DatabaseService {
 
   drinkCollection: AngularFirestoreCollection<Item>;
   drinkDocument: AngularFirestoreDocument<Node>;
-  
+
   foodCollection: AngularFirestoreCollection<Item>;
   foodDocument: AngularFirestoreDocument<Node>;
 

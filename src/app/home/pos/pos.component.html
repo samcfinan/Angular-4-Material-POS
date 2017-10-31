@@ -2,7 +2,7 @@
   <mat-card-title class="add-padding heading">Select Items</mat-card-title>
 
   <mat-tab-group>
-    <mat-tab *ngFor="let type of products" label="type">
+    <mat-tab *ngFor="let type of products; let i = index" label="{{productTypes[i]}}">
       <div class="flex flex-direction-row flex-wrap menu justify-center">
         <div *ngFor="let item of type | async" class="flex flex-direction-column item" (click)="addToCheck(item)">
           <div [ngStyle]="{'background-image': 'url(' + item.img_url + ')'}" class="item-img"></div>

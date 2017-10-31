@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material';
 export class PosComponent implements OnInit {
 
   products = [];
+  productTypes = ['Drink', 'Food'];
   ticket: Item[];
   cartTotal = 0;
   cartNumItems = 0;
