@@ -4,7 +4,7 @@
   <mat-tab-group>
     <mat-tab label="Drink">
       <div class="flex flex-direction-row flex-wrap menu justify-center">
-        <div *ngFor="let item of drink" class="flex flex-direction-column item" (click)="addToCheck(item)">
+        <div *ngFor="let item of items | async" class="flex flex-direction-column item" (click)="addToCheck(item)">
           <div [ngStyle]="{'background-image': 'url(' + item.img + ')'}" class="item-img"></div>
           <h3 class="item-name">{{item.name}}</h3>
         </div>

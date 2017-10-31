@@ -29,8 +29,8 @@
             </mat-select>
           </mat-form-field>
 
-          <h3>Upload Image:</h3>
-          <input mat-button type="file" (change)="detectFiles($event)">
+          <label for="upload" class="file-upload__label">Upload Image</label>
+          <input id="upload" class="file-upload__input" type="file" name="file-upload" (change)="detectFiles($event)">
 
         </form>
     </mat-card-content>
@@ -43,7 +43,7 @@
 
   <mat-accordion class="add-margin">
     <!-- Item Panel -->
-    <mat-expansion-panel *ngFor="let item of items | async">
+    <mat-expansion-panel *ngFor="let item of food | async">
       <mat-expansion-panel-header>
         <mat-panel-title>{{item.name}}</mat-panel-title>
         <mat-panel-description>{{item.item_type}}</mat-panel-description>
@@ -66,6 +66,15 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <!-- Product image -->
+        <!-- <hr> -->
+        <h3>Product image:</h3>
+        <div class="flex flex-direction-row product-image-section">
+          <img class="product-image" src="{{item.img}}">
+          <!-- <label for="upload" class="file-upload__label">Change Image</label> -->
+          <!-- <input id="upload" class="file-upload__input" type="file" name="file-upload" (change)="detectFiles($event)">   -->
+        </div>
+
       </form>
       <!-- Save/Delete buttons -->
       <mat-action-row>

@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Item, Order } from '../../item';
 import { PosService } from '../../pos.service';
+import { DatabaseService } from '../../database.service';
 import {MatTabsModule} from '@angular/material';
 
 
@@ -11,18 +12,21 @@ import {MatTabsModule} from '@angular/material';
 })
 export class PosComponent implements OnInit {
 
-  drink = DRINK;
-  food = EAT;
+  drink;
+  food;
   ticket: Item[];
   cartTotal = 0;
   cartNumItems = 0;
+  items;
 
-  constructor(private ticketSync: PosService) { }
+  constructor(private ticketSync: PosService, private db: DatabaseService) { }
 
   ngOnInit() {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
     this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
     this.ticketSync.currentCartNum.subscribe(num => this.cartNumItems);
+    this.drink = this.db.getDrink();
+    this.food = this.db.getFood();
   }
 
   addToCheck(item: Item) {

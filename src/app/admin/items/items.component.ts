@@ -16,14 +16,17 @@ export class ItemsComponent implements OnInit {
   newItemName: string;
   newItemType: string;
 
-  items;
+  food;
+  drink;
   selectedFiles: FileList;
   currentUpload: Upload;
 
   constructor(private db: DatabaseService) { }
 
   ngOnInit() {
-    this.items = this.db.getItems();
+    this.food = this.db.getFood();
+    this.drink = this.db.getDrink();
+
   }
 
   addItemToggle() {
@@ -40,10 +43,11 @@ export class ItemsComponent implements OnInit {
   addItem() {
     const file = this.selectedFiles.item(0);
     this.currentUpload = new Upload(file);
-    this.db.pushItem(this.newItemName, this.newItemPrice, this.newItemType, this.currentUpload);
+    this.db.pushUpload(this.newItemName, this.newItemPrice, this.newItemType, this.currentUpload);
     this.newItemName = null;
     this.newItemPrice = null;
     this.newItemType = null;
+    this.selectedFiles = null;
   }
 
   detectFiles(event) {

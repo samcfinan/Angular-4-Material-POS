@@ -10,16 +10,21 @@ export class DatabaseService {
   ordersCollection: AngularFirestoreCollection<Order>;
   orderDocument: AngularFirestoreDocument<Node>;
 
-  itemsCollection: AngularFirestoreCollection<Item>;
-  itemDocument: AngularFirestoreDocument<Node>;
+  drinkCollection: AngularFirestoreCollection<Item>;
+  drinkDocument: AngularFirestoreDocument<Node>;
+  
+  foodCollection: AngularFirestoreCollection<Item>;
+  foodDocument: AngularFirestoreDocument<Node>;
 
   uploadsRef: AngularFirestoreCollection<Upload>;
   uploads: Observable<Upload[]>;
   lastUpload: Upload;
+  lastUploadUrl: String;
 
   constructor(private afs: AngularFirestore) {
     this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10));
-    this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('item_type'));
+    this.drinkCollection = this.afs.collection('drink');
+    this.foodCollection = this.afs.collection('food');
   }
 
   updateNumRequested(num) {
@@ -63,21 +68,32 @@ export class DatabaseService {
     return this.getItem(id).update(itemdata);
   }
 
-  pushItem(name: string, price: number, type: string, image: Upload) {
-    this.pushUpload(image);
-    const item: Item = {name: name, price: price, item_type: type, quantity: 1, img: this.lastUpload.url};
-    return this.itemsCollection.add(item);
+  pushItem(name: string, price: number, type: string, img_url: string) {
+    const item: Item = {name: name, price: price, item_type: type, quantity: 1, img: img_url};
+    if ( type === 'Food' ) {
+      return this.foodCollection.add(item);
+    } else if ( type === 'Drink' ) {
+      return this.drinkCollection.add(item);
+    }
   }
 
-  getItems() {
-    return this.itemsCollection.snapshotChanges().map(actions => {
+  getFood() {
+    return this.foodCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         return { id: a.payload.doc.id, ...a.payload.doc.data() };
       });
     });
   }
 
-  pushUpload(upload: Upload) {
+  getDrink() {
+    return this.drinkCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        return { id: a.payload.doc.id, ...a.payload.doc.data() };
+      });
+    });
+  }
+
+  pushUpload(name: string, price: number, type: string, upload: Upload) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${'/'}/${upload.file.name}`).put(upload.file);
 
@@ -96,6 +112,7 @@ export class DatabaseService {
         upload.url = uploadTask.snapshot.downloadURL;
         upload.name = upload.file.name;
         this.lastUpload = upload;
+        this.pushItem(name, price, type, upload.url);
       }
     );
   }
