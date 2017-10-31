@@ -68,8 +68,9 @@ export class DatabaseService {
     return this.afs.doc<Item>(collection + id);
   }
 
-  deleteItem(id, type) {
+  deleteItem(id, type, img) {
     console.log('type');
+    this.deleteUpload(img);
     return this.getItem(id, type).delete();
   }
 
@@ -124,6 +125,12 @@ export class DatabaseService {
         this.pushItem(name, price, type, upload.name, upload.url);
       }
     );
+  }
+
+  deleteUpload(name: string) {
+    const storageRef = firebase.storage().ref();
+    const imageRef = storageRef.child('/' + name);
+    imageRef.delete();
   }
 
 

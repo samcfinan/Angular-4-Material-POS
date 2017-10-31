@@ -67,8 +67,8 @@ export class ItemsComponent implements OnInit {
       quantity: 1 });
   }
 
-  deleteItem(id, type) {
-    this.db.deleteItem(id, type);
+  deleteItem(id, type, img) {
+    this.db.deleteItem(id, type, img);
   }
 
 }
