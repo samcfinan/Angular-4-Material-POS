@@ -12,8 +12,7 @@ import {MatTabsModule} from '@angular/material';
 })
 export class PosComponent implements OnInit {
 
-  drink;
-  food;
+  products = [];
   ticket: Item[];
   cartTotal = 0;
   cartNumItems = 0;
@@ -25,8 +24,8 @@ export class PosComponent implements OnInit {
     this.ticketSync.currentTicket.subscribe(data => this.ticket = data);
     this.ticketSync.currentTotal.subscribe(total => this.cartTotal = total);
     this.ticketSync.currentCartNum.subscribe(num => this.cartNumItems);
-    this.drink = this.db.getDrink();
-    this.food = this.db.getFood();
+    this.products[0] = this.db.getDrink();
+    this.products[1] = this.db.getFood();
   }
 
   addToCheck(item: Item) {

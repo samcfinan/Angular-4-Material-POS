@@ -2,18 +2,10 @@
   <mat-card-title class="add-padding heading">Select Items</mat-card-title>
 
   <mat-tab-group>
-    <mat-tab label="Drink">
+    <mat-tab *ngFor="let type of products" label="type">
       <div class="flex flex-direction-row flex-wrap menu justify-center">
-        <div *ngFor="let item of items | async" class="flex flex-direction-column item" (click)="addToCheck(item)">
-          <div [ngStyle]="{'background-image': 'url(' + item.img + ')'}" class="item-img"></div>
-          <h3 class="item-name">{{item.name}}</h3>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Food">
-      <div class="flex flex-direction-row flex-wrap menu justify-center">
-        <div *ngFor="let item of food" class="flex flex-direction-column item" (click)="addToCheck(item)">
-          <div [ngStyle]="{'background-image': 'url(' + item.img + ')'}" class="item-img"></div>
+        <div *ngFor="let item of type | async" class="flex flex-direction-column item" (click)="addToCheck(item)">
+          <div [ngStyle]="{'background-image': 'url(' + item.img_url + ')'}" class="item-img"></div>
           <h3 class="item-name">{{item.name}}</h3>
         </div>
       </div>
