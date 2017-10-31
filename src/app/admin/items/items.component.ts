@@ -16,6 +16,8 @@ export class ItemsComponent implements OnInit {
   newItemName: string;
   newItemType: string;
 
+  products = [];
+
   food;
   drink;
   selectedFiles: FileList;
@@ -24,8 +26,8 @@ export class ItemsComponent implements OnInit {
   constructor(private db: DatabaseService) { }
 
   ngOnInit() {
-    this.food = this.db.getFood();
-    this.drink = this.db.getDrink();
+    this.products[0] = this.db.getFood();
+    this.products[1] = this.db.getDrink();
 
   }
 
@@ -65,8 +67,8 @@ export class ItemsComponent implements OnInit {
       quantity: 1 });
   }
 
-  deleteItem(id) {
-    this.db.deleteItem(id);
+  deleteItem(id, type) {
+    this.db.deleteItem(id, type);
   }
 
 }

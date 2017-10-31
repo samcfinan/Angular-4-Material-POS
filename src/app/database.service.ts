@@ -56,20 +56,29 @@ export class DatabaseService {
 
   // Edit POS Items
 
-  getItem(id) {
-    return this.afs.doc<Item>('items/' + id);
+  // Type selects the right collection to query for ID
+  getItem(id, type) {
+    let collection = '';
+    if ( type === 'Food' ) {
+      collection = 'food/';
+    } else {
+      collection = 'drink/';
+    }
+    console.log(id);
+    return this.afs.doc<Item>(collection + id);
   }
 
-  deleteItem(id) {
-    return this.getItem(id).delete();
+  deleteItem(id, type) {
+    console.log('type');
+    return this.getItem(id, type).delete();
   }
 
   updateItem(id, itemdata: Item) {
-    return this.getItem(id).update(itemdata);
+    return this.getItem(id, itemdata.item_type).update(itemdata);
   }
 
-  pushItem(name: string, price: number, type: string, img_url: string) {
-    const item: Item = {name: name, price: price, item_type: type, quantity: 1, img: img_url};
+  pushItem(name: string, price: number, type: string, img_name: string, img_url: string) {
+    const item: Item = {name: name, price: price, item_type: type, quantity: 1, img_name: img_name, img_url: img_url};
     if ( type === 'Food' ) {
       return this.foodCollection.add(item);
     } else if ( type === 'Drink' ) {
@@ -112,7 +121,7 @@ export class DatabaseService {
         upload.url = uploadTask.snapshot.downloadURL;
         upload.name = upload.file.name;
         this.lastUpload = upload;
-        this.pushItem(name, price, type, upload.url);
+        this.pushItem(name, price, type, upload.name, upload.url);
       }
     );
   }

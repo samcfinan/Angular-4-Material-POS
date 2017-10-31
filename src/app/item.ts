@@ -3,7 +3,8 @@ export interface Item {
   name: string;
   price: number;
   item_type: string;
-  img?: string;
+  img_name?: string;
+  img_url?: string;
   quantity?: number;
 }
 

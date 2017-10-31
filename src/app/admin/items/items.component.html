@@ -37,13 +37,14 @@
     <!-- Save/Cancel -->
     <mat-action-row class="new-item-action-row">
       <button mat-button (click)="addItem()">Save</button>
-      <button mat-button color="warn">Cancel</button>
+      <button mat-button color="warn" (click)="addItemToggle()">Cancel</button>
     </mat-action-row>
   </mat-card>
 
-  <mat-accordion class="add-margin">
+  <!-- List of products in database -->
+  <mat-accordion *ngFor="let type of products" class="add-margin">
     <!-- Item Panel -->
-    <mat-expansion-panel *ngFor="let item of food | async">
+    <mat-expansion-panel *ngFor="let item of type | async">
       <mat-expansion-panel-header>
         <mat-panel-title>{{item.name}}</mat-panel-title>
         <mat-panel-description>{{item.item_type}}</mat-panel-description>
@@ -70,16 +71,14 @@
         <!-- <hr> -->
         <h3>Product image:</h3>
         <div class="flex flex-direction-row product-image-section">
-          <img class="product-image" src="{{item.img}}">
-          <!-- <label for="upload" class="file-upload__label">Change Image</label> -->
-          <!-- <input id="upload" class="file-upload__input" type="file" name="file-upload" (change)="detectFiles($event)">   -->
+          <img class="product-image" src="{{item.img_url}}">
         </div>
 
       </form>
       <!-- Save/Delete buttons -->
       <mat-action-row>
         <button mat-button (click)="updateItem(item.id, name.value, price.value, type.value)">Save</button>
-        <button mat-button color="warn" (click)="deleteItem(item.id)">Delete</button>
+        <button mat-button color="warn" (click)="deleteItem(item.id, item.item_type)">Delete</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
