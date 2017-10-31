@@ -30,7 +30,7 @@
           </mat-form-field>
 
           <label for="upload" class="file-upload__label">Upload Image</label>
-          <input id="upload" class="file-upload__input" type="file" name="file-upload" (change)="detectFiles($event)">
+          <input id="upload" class="file-upload__input" type="file" name="file-upload" accept="image/*" (change)="detectFiles($event)">
 
         </form>
     </mat-card-content>

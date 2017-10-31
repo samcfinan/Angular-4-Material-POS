@@ -69,7 +69,6 @@ export class DatabaseService {
   }
 
   deleteItem(id, type, img) {
-    console.log('type');
     this.deleteUpload(img);
     return this.getItem(id, type).delete();
   }
