@@ -8,7 +8,8 @@ import { ItemsComponent } from './items/items.component';
 import { UsersComponent } from './users/users.component';
 import { AdminComponent } from './admin/admin.component';
 
-import {MatIconModule, MatButtonModule, MatCardModule, MatExpansionModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatIconModule, MatButtonModule, MatCardModule, MatExpansionModule, 
+MatInputModule, MatSelectModule, MatCheckboxModule} from '@angular/material';
 
 import { DatabaseService } from '../database.service';
 import { AuthService } from '../core/auth.service';
@@ -22,7 +23,8 @@ import { AuthService } from '../core/auth.service';
     MatExpansionModule,
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   declarations: [
     ItemsComponent,

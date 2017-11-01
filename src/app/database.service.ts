@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase';
 import { Item, Order, Upload } from './item';
+import { User } from './core/user';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -16,6 +17,9 @@ export class DatabaseService {
   foodCollection: AngularFirestoreCollection<Item>;
   foodDocument: AngularFirestoreDocument<Node>;
 
+  userCollection: AngularFirestoreCollection<User>;
+  userDocument: AngularFirestoreDocument<Node>;
+
   uploadsRef: AngularFirestoreCollection<Upload>;
   uploads: Observable<Upload[]>;
   lastUpload: Upload;
@@ -25,6 +29,7 @@ export class DatabaseService {
     this.ordersCollection = this.afs.collection('past_orders', ref => ref.orderBy('orderNumber', 'desc').limit(10));
     this.drinkCollection = this.afs.collection('drink');
     this.foodCollection = this.afs.collection('food');
+    this.userCollection = this.afs.collection('users');
   }
 
   updateNumRequested(num) {
@@ -64,7 +69,6 @@ export class DatabaseService {
     } else {
       collection = 'drink/';
     }
-    console.log(id);
     return this.afs.doc<Item>(collection + id);
   }
 
@@ -100,6 +104,22 @@ export class DatabaseService {
         return { id: a.payload.doc.id, ...a.payload.doc.data() };
       });
     });
+  }
+
+  getUsers() {
+    return this.userCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        return { id: a.payload.doc.id, ...a.payload.doc.data() };
+      });
+    });
+  }
+
+  getUser(id) {
+    return this.afs.doc<User>('users/' + id);
+  }
+
+  updateUser(id, roles) {
+    return this.getUser(id).update(roles);
   }
 
   pushUpload(name: string, price: number, type: string, upload: Upload) {
