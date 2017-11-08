@@ -1,12 +1,20 @@
 # Angular 4 POS
 
-A basic point-of-sale demo application built in Angular 4. This project uses Angular Material UI elements (https://material.angular.io) and a Firebase Cloud Firestore backend.
+A basic point-of-sale demo application built in Angular 4. This project uses Angular Material UI elements (https://material.angular.io) and a Firebase Cloud Firestore backend (https://firebase.google.com).
 
-The purpose is to demonstrate a simple POS using modern frameworks. Users can perform transactions, add/modify products, create new user accounts, and see a paginated transaction history.
+The purpose is to demonstrate a simple POS using modern frameworks. Users can perform transactions, add/modify products (with image upload), create new user accounts, and see a paginated transaction history.
+
+DEMO: https://angularpos.samfinan.com
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
 Project built by Sam Finan (www.samfinan.com) for fun & games.
+
+## How to Use
+
+1. Clone project
+2. Run `npm install`
+3. Run `ng serve`
 
 
 ## Development server
