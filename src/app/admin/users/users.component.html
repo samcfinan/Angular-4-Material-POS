@@ -24,7 +24,7 @@
     </mat-card-content>
     <!-- Save/Cancel -->
     <mat-action-row class="new-item-action-row">
-      <button mat-button >Save</button>
+      <button mat-button (click)="userSignup()">Save</button>
       <button mat-button color="warn">Cancel</button>
     </mat-action-row>
   </mat-card>
@@ -38,12 +38,19 @@
       </mat-expansion-panel-header>
       <!-- Edit form -->
       <form>
-        <h3>Roles</h3>
-        <mat-checkbox #admin name="admin" value="{{user.roles.admin}}">Admin</mat-checkbox>
+        <mat-form-field>
+          <!-- <h3>Permissions</h3> -->
+          <mat-select #admin placeholder="{{user.admin | parseUserRole}}">
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
       </form>
       <!-- Save/Delete buttons -->
       <mat-action-row>
-        <button mat-button (click)="updateUser(user.id, { cashier: true, admin: admin.value })">Save</button>
+        <button mat-button (click)="updateUser(user.id, admin.value)">Save</button>
         <button mat-button color="warn">Delete</button>
       </mat-action-row>
     </mat-expansion-panel>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../database.service';
 import { AuthService } from '../../core/auth.service';
+import { ParseUserRolePipe } from './parse-user-role.pipe';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +16,8 @@ export class UsersComponent implements OnInit {
   newUserPassword: string;
 
   users;
+
+  roles = ['Cashier', 'Admin'];
 
   constructor(private db: DatabaseService, private authService: AuthService) {  }
 
@@ -34,10 +37,17 @@ export class UsersComponent implements OnInit {
 
   userSignup() {
     this.authService.signup(this.newUserEmail, this.newUserPassword);
+    this.newUserEmail = null;
+    this.newUserPassword = null;
   }
 
-  updateUser(id, roles) {
-    this.authService.updateUserRole(id, roles);
+  updateUser(id, role) {
+    // Check if admin role has been selected
+    let admin = false;
+    if (role === 'Admin') {
+      admin = true;
+    }
+    this.authService.updateUserRole(id, {admin: admin});
   }
 
   deleteUser() {

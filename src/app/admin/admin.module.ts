@@ -13,6 +13,7 @@ MatInputModule, MatSelectModule, MatCheckboxModule} from '@angular/material';
 
 import { DatabaseService } from '../database.service';
 import { AuthService } from '../core/auth.service';
+import { ParseUserRolePipe } from './users/parse-user-role.pipe';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { AuthService } from '../core/auth.service';
   declarations: [
     ItemsComponent,
     UsersComponent,
-    AdminComponent
+    AdminComponent,
+    ParseUserRolePipe
   ],
   providers: [DatabaseService, AuthService]
 })

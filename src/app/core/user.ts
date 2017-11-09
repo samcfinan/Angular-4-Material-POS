@@ -1,14 +1,11 @@
-export interface Roles {
-  cashier: boolean;
-  admin?: boolean;
-}
-
 export class User {
   email: string;
-  roles: Roles;
+  cashier: true;
+  admin: false;
 
   constructor(authData) {
     this.email = authData.email;
-    this.roles = { cashier: true };
+    this.cashier = true;
+    this.admin = false;
   }
 }
