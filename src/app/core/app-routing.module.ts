@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { HomeComponent } from '../home/home.component';

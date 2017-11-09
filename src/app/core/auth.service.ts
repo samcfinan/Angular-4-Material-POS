@@ -39,7 +39,7 @@ export class AuthService {
     .then((user) => {
       this.authState = user;
     });
-    const newUser: User = {email: email, roles: {cashier: true, admin: false}};
+    const newUser: User = {email: email, cashier: true, admin: false};
     this.afs.collection('users').add(newUser);
   }
 
