@@ -118,6 +118,10 @@ export class DatabaseService {
     return this.afs.doc<User>('users/' + id);
   }
 
+  deleteUser(id) {
+    this.getUser(id).delete();
+  }
+
   updateUser(id, roles) {
     return this.getUser(id).update(roles);
   }

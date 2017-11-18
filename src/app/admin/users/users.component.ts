@@ -39,6 +39,7 @@ export class UsersComponent implements OnInit {
     this.authService.signup(this.newUserEmail, this.newUserPassword);
     this.newUserEmail = null;
     this.newUserPassword = null;
+    this.addUserToggle();
   }
 
   updateUser(id, role) {

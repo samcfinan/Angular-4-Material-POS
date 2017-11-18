@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], children: [
     { path: 'users', component: UsersComponent },
     { path: 'items', component: ItemsComponent }
   ] },
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AdminGuard],
   exports: [RouterModule],
   declarations: []
 })
