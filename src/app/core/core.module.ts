@@ -6,12 +6,14 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AdminGuard } from './admin.guard';
 
+import { NotifyService } from './notify.service';
+
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule
   ],
   declarations: [],
-  providers: [AuthService, AdminGuard]
+  providers: [AuthService, NotifyService]
 })
 export class CoreModule { }

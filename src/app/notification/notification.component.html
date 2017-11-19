@@ -1,0 +1,9 @@
+<div *ngIf="notify.msg | async as msg" class="flex flex-direction-row align-items-center justify-center notification"
+  [ngClass]="{ 
+    'is-danger': msg.style == 'error',
+    'is-success': msg.style == 'success',
+    'is-info': msg.style == 'info'
+  }">
+  <h3>{{ msg.content }}</h3>
+  <button mat-raised-button class="delete" (click)="notify.clear()">Ignore</button>
+</div>

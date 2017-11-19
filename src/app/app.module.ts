@@ -26,6 +26,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './welcome/login/login.component';
 import { ResetpasswordComponent } from './welcome/resetpassword/resetpassword.component';
+import { NotificationComponent } from './notification/notification.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -36,7 +37,8 @@ export const firebaseConfig = environment.firebaseConfig;
     WelcomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    NotificationComponent
   ],
   imports: [
     AppRoutingModule,

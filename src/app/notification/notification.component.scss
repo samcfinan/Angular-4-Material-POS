@@ -1,0 +1,12 @@
+@import '../app.component.scss';
+
+.notification {
+  text-align: center;
+  padding: 0.75rem;
+  opacity: 60%;
+  background-color: rgb(212, 0, 0);
+}
+
+.delete {
+  margin-left: 1rem;
+}
