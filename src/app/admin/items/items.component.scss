@@ -1,0 +1,64 @@
+@import '../../app.component.scss';
+
+.container {
+  // margin: 2rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.data {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+mat-form-field {
+  margin-right: 1rem;
+}
+
+.new-item-action-row {
+  padding-bottom: 0;
+}
+
+.product-image {
+  max-width: 4rem;
+  max-height: 4rem;
+  margin-top: 0.75rem;
+  margin-right: 1rem;
+}
+
+.file-upload {
+	position: relative;
+	display: inline-block;
+}
+
+.file-upload__label {
+  display: block;
+  padding: 1em 2em;
+  color: #fff;
+  background: rgb(97, 97, 97);
+  border-radius: .4em;
+  transition: background .3s;
+  text-align: center;
+  height: 1.25rem;
+  max-width: 15%;
+  margin-top: 0.75rem;
+  
+  &:hover {
+     cursor: pointer;
+     background: rgb(66, 66, 66);
+  }
+}
+    
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}

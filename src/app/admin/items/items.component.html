@@ -1,0 +1,89 @@
+<div class="add-margin flex flex-direction-column container">
+  <div class="title">
+    <h1>POS Items</h1>
+    <p>Edit and add items for sale below.</p>
+  </div>
+
+  <div class="add-margin">
+    <button mat-raised-button (click)="addItemToggle()">Add Item</button>
+  </div>
+
+  <mat-card *ngIf="addItemActive" class="add-margin">
+    <mat-card-title>Add Item</mat-card-title>
+    <mat-card-content>
+      <form class="form">
+          <!-- Name -->
+          <mat-form-field>
+            <input matInput placeholder="Name:" value="Item 1" name="name" [(ngModel)]="newItemName">
+          </mat-form-field>
+          <!-- Price -->
+          <mat-form-field>
+            <input matInput placeholder="Price ($):" type="number" value="3.25" name="value" [(ngModel)]="newItemPrice">
+          </mat-form-field>
+          <!-- Product type dropdown -->
+          <mat-form-field>
+            <mat-select placeholder="Product type:" name="productType" [(ngModel)]="newItemType">
+              <mat-option *ngFor="let type of productTypes" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <label for="upload" class="file-upload__label">Upload Image</label>
+          <input id="upload" class="file-upload__input" type="file" name="file-upload" accept="image/*" (change)="detectFiles($event)">
+
+        </form>
+    </mat-card-content>
+    <!-- Save/Cancel -->
+    <mat-action-row class="new-item-action-row">
+      <button mat-button (click)="addItem()">Save</button>
+      <button mat-button color="warn" (click)="addItemToggle()">Cancel</button>
+    </mat-action-row>
+  </mat-card>
+
+  <!-- List of products in database -->
+  <mat-accordion *ngFor="let type of products" class="add-margin">
+    <!-- Item Panel -->
+    <mat-expansion-panel *ngFor="let item of type | async">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{item.name}}</mat-panel-title>
+        <mat-panel-description>{{item.item_type}}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Edit form -->
+      <form class="form">
+        <!-- Name -->
+        <mat-form-field>
+          <input #name matInput placeholder="Name:" value="{{item.name}}">
+        </mat-form-field>
+        <!-- Price -->
+        <mat-form-field>
+          <input #price matInput type="number" placeholder="Price ($):" value="{{item.price}}">
+        </mat-form-field>
+        <!-- Product type dropdown -->
+        <mat-form-field>
+          <mat-select #type placeholder="{{item.item_type}}" value="{{item.item_type}}">
+            <mat-option *ngFor="let type of productTypes" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- Product image -->
+        <!-- <hr> -->
+        <h3>Product image:</h3>
+        <div class="flex flex-direction-row product-image-section">
+          <img class="product-image" src="{{item.img_url}}">
+        </div>
+
+      </form>
+      <!-- Save/Delete buttons -->
+      <mat-action-row>
+        <button mat-button (click)="updateItem(item.id, name.value, price.value, type.value)">Save</button>
+        <button mat-button color="warn" (click)="deleteItem(item.id, item.item_type, item.img_name)">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>
+
+
+

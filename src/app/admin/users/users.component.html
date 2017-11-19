@@ -1,0 +1,59 @@
+<div class="add-margin flex flex-direction-column container">
+  <div class="title">
+    <h1>Users</h1>
+    <p>Edit and add user account below.</p>
+  </div>
+
+  <div class="add-margin">
+    <button mat-raised-button (click)="addUserToggle()">Add User</button>
+  </div>
+
+  <mat-card *ngIf="addUserActive" class="add-margin">
+    <mat-card-title>Add User</mat-card-title>
+    <mat-card-content>
+      <form class="form">
+          <!-- Name -->
+          <mat-form-field>
+            <input matInput placeholder="Email:" type="email" value="Item 1" name="email" [(ngModel)]="newUserEmail">
+          </mat-form-field>
+          <!-- Price -->
+          <mat-form-field>
+            <input matInput placeholder="Password:" type="password" name="password" [(ngModel)]="newUserPassword">
+          </mat-form-field>
+        </form>
+    </mat-card-content>
+    <!-- Save/Cancel -->
+    <mat-action-row class="new-item-action-row">
+      <button mat-button (click)="userSignup()">Save</button>
+      <button mat-button color="warn">Cancel</button>
+    </mat-action-row>
+  </mat-card>
+
+  <!-- List of users in database -->
+  <mat-accordion class="add-margin">
+    <!-- User Panel -->
+    <mat-expansion-panel *ngFor="let user of users | async">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{user.email}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <!-- Edit form -->
+      <form>
+        <mat-form-field>
+          <!-- <h3>Permissions</h3> -->
+          <mat-select #admin placeholder="{{user.admin | parseUserRole}}">
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{role}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </form>
+      <!-- Save/Delete buttons -->
+      <mat-action-row>
+        <button mat-button (click)="updateUser(user.id, admin.value)">Save</button>
+        <button mat-button color="warn">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>

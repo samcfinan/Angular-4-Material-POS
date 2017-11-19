@@ -8,7 +8,10 @@ import { AuthService } from '../core/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+
+  constructor(private auth: AuthService) {
+
+  }
 
   ngOnInit() {
   }
@@ -16,5 +19,6 @@ export class NavComponent implements OnInit {
   logout() {
     this.auth.signOut();
   }
+
 
 }
