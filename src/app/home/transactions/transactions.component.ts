@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../database.service';
 import { Order, Item } from '../../item';
 import { LineItemModalComponent } from '../../home/history/line-item-modal/line-item-modal.component';
+import { AuthService } from '../../core/auth.service';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { NotifyService } from '../../core/notify.service';
 
 @Component({
   selector: 'app-transactions',
@@ -17,7 +19,8 @@ export class TransactionsComponent implements OnInit {
   displayRows = 25;
   rowOptions = [25, 50, 100, 200];
 
-  constructor(private db: DatabaseService, public dialog: MatDialog) { }
+  constructor(private db: DatabaseService, private authService: AuthService,
+    public dialog: MatDialog, private notify: NotifyService) { }
 
   ngOnInit() {
     this.renderNewRows();
@@ -39,9 +42,11 @@ export class TransactionsComponent implements OnInit {
   }
 
   deleteOrder(id) {
-    this.db.deleteOrder(id);
+    if (this.authService.admin) {
+      this.db.deleteOrder(id);
+    } else {
+      this.notify.update('You do not have admin privileges.', 'error');
+    }
   }
-
-  getLastOrderId() {}
 
 }
