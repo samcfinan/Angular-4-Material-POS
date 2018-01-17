@@ -14,6 +14,8 @@ import { ResetpasswordComponent } from '../welcome/resetpassword/resetpassword.c
 import { UsersComponent  } from '../admin/users/users.component';
 import { ItemsComponent } from '../admin/items/items.component';
 
+import { ReportsComponent } from '../home/reports/reports.component';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -24,7 +26,7 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent },
     { path: 'items', component: ItemsComponent }
   ] },
-  { path: 'transactions', component: TransactionsComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

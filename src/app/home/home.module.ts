@@ -12,7 +12,10 @@ import { LineItemModalComponent } from './history/line-item-modal/line-item-moda
 import { TransactionsComponent } from './transactions/transactions.component';
 
 import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogModule, MatSelectModule} from '@angular/material';
+import { ReportsComponent } from './reports/reports.component';
+import { LineChartComponent } from './reports/line-chart/line-chart.component';
 
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   imports: [
@@ -24,7 +27,8 @@ import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogM
     MatTabsModule,
     MatSelectModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   declarations: [
     HomeComponent,
@@ -32,7 +36,9 @@ import {MatIconModule, MatButtonModule, MatTabsModule, MatCardModule, MatDialogM
     LineItemModalComponent,
     PosComponent,
     HistoryComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    ReportsComponent,
+    LineChartComponent
   ],
   entryComponents: [LineItemModalComponent]
 })
