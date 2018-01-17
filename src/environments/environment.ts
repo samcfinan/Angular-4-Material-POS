@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   // Initialize Firebase
   firebaseConfig: {
+    apiKey: 'AIzaSyASE-ZPKkrdKfW8K1skuUUacJG35-_J9oE',
     authDomain: 'angularpos.firebaseapp.com',
     databaseURL: 'https://angularpos.firebaseio.com',
     projectId: 'angularpos',
