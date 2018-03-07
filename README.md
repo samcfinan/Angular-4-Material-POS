@@ -14,12 +14,35 @@ Project built by Sam Finan (www.samfinan.com) for fun & games.
 
 1. Clone project
 2. Run `npm install`
-3. Run `ng serve`
+3. Create Firebase environment config files (see below).
+4. Run `ng serve`
 
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Firebase Configuration
+
+Create `src/environments` directory and `environment.ts` and `environment.prod.ts` configuration files. The configuration files should use the following format and can be retrieved from your [Firebase console](https://console.firebase.google.com).
+
+`
+export const environment = {
+  production: false,
+  // Initialize Firebase
+  firebaseConfig: {
+    apiKey: 'xxxxxx',
+    authDomain: 'angularpos.firebaseapp.com',
+    databaseURL: 'https://angularpos.firebaseio.com',
+    projectId: 'angularpos',
+    storageBucket: 'angularpos.appspot.com',
+    messagingSenderId: 'xxxxxx'
+  }
+};
+
+`
+
+
 
 ## Build
 
