@@ -26,7 +26,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Create `src/environments` directory and `environment.ts` and `environment.prod.ts` configuration files. The configuration files should use the following format and can be retrieved from your [Firebase console](https://console.firebase.google.com).
 
-`
+```
 export const environment = {
   production: false,
   // Initialize Firebase
@@ -39,8 +39,7 @@ export const environment = {
     messagingSenderId: 'xxxxxx'
   }
 };
-
-`
+```
 
 
 
